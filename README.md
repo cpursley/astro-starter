@@ -1,6 +1,8 @@
-# Astro Starter
+# 🚀 Astro Starter
 
-## Integrations
+Scaffold for quickly building static sites with SEO performance in mind.
+
+## 🔌 Integrations
 - [@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)
 - [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
 - [@astrojs/mdx](https://docs.astro.build/en/guides/markdown-content/)
@@ -8,13 +10,13 @@
 - [Astrolib SEO](https://github.com/onwidget/astrolib/tree/main/packages/seo)
 - [astro-robots-txt](https://github.com/alextim/astro-lib/tree/main/packages/astro-robots-txt#readme)
 
-## Get Started
+## 🏁 Get Started
 
 ```sh
 npm install && npm run dev
 ```
 
-## 🚀 Project Structure
+## 📁 Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
 
