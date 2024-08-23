@@ -1,11 +1,14 @@
 ---
+import { useTranslations } from "../i18n";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
+const t = useTranslations();
+
 const metaProps = {
+    siteName: t("siteMetadata.title"),
     pageTitle: "About",
-    pageDescription: "About this site",
-    pageUrl: "https://website.com/about",
-    siteName: "website.com",
+    pageDescription: t("pages.about.description"),
+    pageUrl: t("siteMetadata.url") + "about",
 };
 ---
 

@@ -37,6 +37,10 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory.
 
+## 🎨 Extend / Customize
+
+`src/i18n/ui.ts` contains a list of variables that you can customize to your liking.
+
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
