@@ -1,8 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const pageTitle = "Home Page";
+
+const metaProps = {
+	pageTitle: "Home Page",
+	pageDescription: "This is the the homepage",
+	pageUrl: "https://website.com",
+	siteName: "website.com",
+};
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-	<h2>My awesome blog subtitle</h2>
+<BaseLayout {...metaProps}>
+	<h2>{metaProps.pageDescription}</h2>
 </BaseLayout>

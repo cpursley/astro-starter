@@ -1,9 +1,17 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-const { frontmatter } = Astro.props;
+
+const { frontmatter, url } = Astro.props;
+
+const metaProps = {
+    pageTitle: frontmatter.title,
+    pageDescription: frontmatter.description,
+    pageUrl: "https://website.com" + url,
+    siteName: "website.com",
+};
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayout {...metaProps} pageTitle={frontmatter.title}>
     <p><em>{frontmatter.description}</em></p>
     <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
 

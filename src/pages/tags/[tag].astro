@@ -29,9 +29,16 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params as { tag: string };
 const { posts } = Astro.props as { posts: MarkdownInstance<Frontmatter>[] };
+
+const metaProps = {
+    pageTitle: `Blog Post Tagged ${tag}`,
+    pageDescription: `These are blog posts tagged ${tag}`,
+    pageUrl: `https://website.com/tags/${tag}`,
+    siteName: "website.com",
+};
 ---
 
-<BaseLayout pageTitle={tag}>
+<BaseLayout {...metaProps}>
     <p>Posts tagged with {tag}</p>
     <ul>
         {
