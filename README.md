@@ -1,14 +1,18 @@
-# Astro Starter Kit: Minimal
+# Astro Starter
+
+## Integrations
+- [@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)
+- [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
+- [@astrojs/mdx](https://docs.astro.build/en/guides/markdown-content/)
+- [@astrojs/rss](https://docs.astro.build/en/guides/rss/)
+- [Astrolib SEO](https://github.com/onwidget/astrolib/tree/main/packages/seo)
+- [astro-robots-txt](https://github.com/alextim/astro-lib/tree/main/packages/astro-robots-txt#readme)
+
+## Get Started
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install && npm run dev
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
 ## 🚀 Project Structure
 
@@ -20,6 +24,8 @@ Inside of your Astro project, you'll see the following folders and files:
 ├── src/
 │   └── pages/
 │       └── index.astro
+│       └── about.astro
+│       └── blog.astro
 └── package.json
 ```
 
