@@ -1,0 +1,21 @@
+---
+interface Props {
+    tags: string[];
+    baseUrl?: string;
+}
+
+const { tags, baseUrl = "/blog/tags/" } = Astro.props;
+---
+
+<div class="flex flex-wrap gap-2">
+    {
+        tags.map((tag: string) => (
+            <a
+                href={`${baseUrl}${tag}`}
+                class="px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-blue-500 hover:text-white transition"
+            >
+                {tag}
+            </a>
+        ))
+    }
+</div>

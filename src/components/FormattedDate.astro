@@ -1,0 +1,19 @@
+---
+import { useTranslations } from "@/i18n";
+
+const { date } = Astro.props;
+const t = useTranslations();
+
+const formattedDate = new Date(date).toLocaleDateString(
+  t("siteMetadata.language"),
+  {
+    weekday: "short",
+    month: "short",
+    day: "2-digit",
+  },
+);
+---
+
+<time datetime={date}>
+  {formattedDate}
+</time>

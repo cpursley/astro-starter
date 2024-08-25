@@ -1,7 +1,10 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import BlogPost from "@/components/BlogPost.astro";
+import PostCard from "@/components/PostCard.astro";
+import { useTranslations } from "@/i18n";
 import type { MarkdownInstance } from "astro";
+
+const t = useTranslations();
 
 interface Frontmatter {
     tags: string[];
@@ -31,20 +34,16 @@ const { tag } = Astro.params as { tag: string };
 const { posts } = Astro.props as { posts: MarkdownInstance<Frontmatter>[] };
 
 const metaProps = {
+    siteName: t("siteMetadata.title"),
     pageTitle: `Blog Post Tagged ${tag}`,
     pageDescription: `These are blog posts tagged ${tag}`,
-    pageUrl: `https://website.com/tags/${tag}`,
-    siteName: "website.com",
+    pageUrl: t("siteMetadata.url") + "/tags/" + tag,
 };
 ---
 
 <BaseLayout {...metaProps}>
     <p>Posts tagged with {tag}</p>
     <ul>
-        {
-            posts.map((post) => (
-                <BlogPost url={post.url} title={post.frontmatter.title} />
-            ))
-        }
+        {posts.map((post) => <PostCard {post} />)}
     </ul>
 </BaseLayout>

@@ -3,6 +3,7 @@ export const defaultLang = 'en' as const;
 export const ui = {
   'en': {
     // Metadata
+    'siteMetadata.language': 'en-US',
     'siteMetadata.title': 'Astro Starter',
     'siteMetadata.url': 'website.com',
 

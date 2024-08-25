@@ -1,35 +1,80 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "./BaseLayout.astro";
-import { useTranslations } from "../i18n";
+import TagList from "@/components/TagList.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+import { useTranslations } from "@/i18n";
 
 const { frontmatter, url } = Astro.props;
+const { author, description, image, pubDate, tags, title } = frontmatter;
 const t = useTranslations();
 
 const metaProps = {
     siteName: t("siteMetadata.title"),
-    pageTitle: frontmatter.title,
-    pageDescription: frontmatter.description,
+    pageTitle: title,
+    pageDescription: description,
     pageUrl: t("siteMetadata.url") + url,
 };
+
+// Fetch all posts to get all tags
+const allPosts = await Astro.glob("../pages/blog/*.md");
+const allTags = [
+    ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
+];
 ---
 
-<BaseLayout {...metaProps} pageTitle={frontmatter.title}>
-    <p><em>{frontmatter.description}</em></p>
-    <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
+<BaseLayout {...metaProps} pageTitle={title}>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:space-x-8">
+            <div class="lg:w-1/4">
+                <nav class="mb-8">
+                    <a href="/blog" class="text-blue-600 hover:text-blue-800">
+                        &larr; Back to All Posts
+                    </a>
+                </nav>
 
-    <p>Written by: {frontmatter.author}</p>
+                <div class="sticky top-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Tags</h2>
+                    <TagList tags={allTags} />
+                </div>
+            </div>
 
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+            <article class="lg:w-3/4">
+                <header class="mb-8">
+                    <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                        {title}
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-4">
+                        <em>{description}</em>
+                    </p>
+                    <div
+                        class="flex items-center space-x-4 text-sm text-gray-500"
+                    >
+                        <span>By {author}</span>
+                        <span>•</span>
+                        <FormattedDate date={pubDate} />
+                    </div>
+                </header>
 
-    <div class="tags">
-        {
-            frontmatter.tags.map((tag: string) => (
-                <p class="tag">
-                    <a href={`/tags/${tag}`}>{tag}</a>
-                </p>
-            ))
-        }
+                {
+                    image && (
+                        <Image
+                            src={image.url}
+                            alt={image.alt}
+                            width={1200}
+                            height={630}
+                            format="webp"
+                            class="w-full h-64 object-cover rounded-lg shadow-md mb-8"
+                        />
+                    )
+                }
+
+                <div
+                    class="prose prose-lg max-w-none mb-8 prose-headings:text-gray-900 prose-a:text-blue-600 hover:prose-a:text-blue-800"
+                >
+                    <slot />
+                </div>
+            </article>
+        </div>
     </div>
-
-    <slot />
 </BaseLayout>
