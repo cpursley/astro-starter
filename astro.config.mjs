@@ -6,5 +6,9 @@ import robotsTxt from "astro-robots-txt";
 // https://astro.build/config
 export default defineConfig({
   site: "https://website.com",
-  integrations: [tailwind(), sitemap(), robotsTxt()]
+  integrations: [
+    tailwind({ nesting: true }),
+    sitemap(),
+    robotsTxt()
+  ]
 });

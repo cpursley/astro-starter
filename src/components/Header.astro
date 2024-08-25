@@ -1,11 +1,52 @@
 ---
 import Hamburger from "./Hamburger.astro";
 import Navigation from "./Navigation.astro";
+import { useTranslations } from "@/i18n";
+
+const t = useTranslations();
 ---
 
-<header>
-    <nav>
-        <Hamburger />
-        <Navigation />
-    </nav>
+<header
+    class="bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg"
+>
+    <div class="container mx-auto px-4 py-4">
+        <nav class="flex justify-between items-center">
+            <a
+                href="/"
+                class="flex items-center space-x-3 hover:opacity-80 transition duration-150"
+            >
+                <img src="/logo.svg" alt="Logo" class="h-8 w-auto" />
+                <span class="text-2xl font-bold">{t("siteMetadata.title")}</span
+                >
+            </a>
+
+            <div class="hidden md:block">
+                <Navigation />
+            </div>
+
+            <div class="md:hidden">
+                <Hamburger />
+            </div>
+        </nav>
+    </div>
+
+    <div
+        id="mobile-menu"
+        class="md:hidden hidden w-full bg-gradient-to-r from-blue-500 to-purple-600"
+    >
+        <div class="container mx-auto px-4 py-2">
+            <Navigation />
+        </div>
+    </div>
 </header>
+
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    }
+</script>

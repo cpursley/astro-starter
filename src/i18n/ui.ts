@@ -8,7 +8,7 @@ export const ui = {
 
     // Home
     'pages.home.title': "Home",
-    'pages.home.description': "This is the the homepage",
+    'pages.home.description': "This is the homepage",
 
     // About
     'pages.about.title': "About",

@@ -1,9 +1,16 @@
 ---
-
+import { navItems } from "../data/navigation";
 ---
 
-<div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/blog">Blog</a>
-</div>
+<nav class="flex flex-col md:flex-row md:space-x-6">
+    {
+        navItems.map((item) => (
+            <a
+                href={item.href}
+                class="text-white hover:text-blue-200 transition duration-150 ease-in-out font-medium text-sm uppercase tracking-wider py-2 md:py-0"
+            >
+                {item.text}
+            </a>
+        ))
+    }
+</nav>

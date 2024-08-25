@@ -1,13 +1,15 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import { useTranslations } from "../i18n";
 
 const { frontmatter, url } = Astro.props;
+const t = useTranslations();
 
 const metaProps = {
+    siteName: t("siteMetadata.title"),
     pageTitle: frontmatter.title,
     pageDescription: frontmatter.description,
-    pageUrl: "https://website.com" + url,
-    siteName: "website.com",
+    pageUrl: t("siteMetadata.url") + url,
 };
 ---
 

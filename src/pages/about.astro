@@ -1,6 +1,6 @@
 ---
-import { useTranslations } from "../i18n";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { useTranslations } from "@/i18n";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const t = useTranslations();
 
@@ -13,8 +13,14 @@ const metaProps = {
 ---
 
 <BaseLayout {...metaProps}>
-    <h2>{metaProps.pageDescription}</h2>
-    <p>
-        More detail about this {metaProps.siteName}
-    </p>
+    <div class="container mx-auto">
+        <div class="max-w-3xl">
+            <h1 class="text-2xl md:text-3xl font-bold text-blue-600 mb-6">
+                {metaProps.pageTitle}
+            </h1>
+            <p class="text-xl text-gray-700 mb-8">
+                {metaProps.pageDescription}
+            </p>
+        </div>
+    </div>
 </BaseLayout>

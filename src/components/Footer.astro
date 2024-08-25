@@ -1,7 +1,33 @@
 ---
+import { useTranslations } from "@/i18n";
+import { footerLinks } from "@/data/footer";
 
+const currentYear = new Date().getFullYear();
+const t = useTranslations();
 ---
 
-<footer>
-    <p>this is the footer</p>
+<footer class="bg-gray-900 text-gray-300 mt-auto">
+    <div class="container mx-auto px-4 py-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <p class="text-sm">
+                    &copy; {currentYear}
+                    {t("siteMetadata.title")}. All rights reserved.
+                </p>
+            </div>
+
+            <div class="flex space-x-4">
+                {
+                    footerLinks.map((link) => (
+                        <a
+                            href={link.href}
+                            class="text-sm hover:text-white transition duration-150"
+                        >
+                            {link.text}
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
 </footer>

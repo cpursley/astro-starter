@@ -1,0 +1,27 @@
+---
+import { AstroSeo } from "@astrolib/seo";
+
+const { pageTitle, pageDescription, pageUrl, siteName } = Astro.props;
+---
+
+<head>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <AstroSeo
+        title={pageTitle}
+        description={pageDescription}
+        canonical={pageUrl}
+        openGraph={{
+            url: pageUrl,
+            title: pageTitle,
+            description: pageDescription,
+            site_name: siteName,
+        }}
+    />
+
+    <title>{pageTitle}</title>
+</head>
