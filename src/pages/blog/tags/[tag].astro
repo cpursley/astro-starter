@@ -10,7 +10,7 @@ interface Frontmatter {
 
 export async function getStaticPaths() {
     const allPosts: MarkdownInstance<Frontmatter>[] =
-        await Astro.glob<MarkdownInstance<Frontmatter>>("../posts/*.md");
+        await Astro.glob<MarkdownInstance<Frontmatter>>("../*.md");
 
     const uniqueTags: string[] = [
         ...new Set(allPosts.flatMap((post) => post.frontmatter.tags)),
