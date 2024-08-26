@@ -1,22 +1,24 @@
 import type { CollectionEntry } from 'astro:content';
 
-export function filterPublishedPosts<T extends { draft?: boolean }>(posts: CollectionEntry<T>[]): CollectionEntry<T>[] {
+type Post = CollectionEntry<'blog'>;
+
+export function filterPublishedPosts(posts: Post[]): Post[] {
     return posts.filter((post) => !post.data.draft);
 }
 
-export function sortPostsByDate<T extends { pubDate: Date }>(posts: CollectionEntry<T>[]): CollectionEntry<T>[] {
+export function sortPostsByDate(posts: Post[]): Post[] {
     return posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
 
-export function getAllTags<T extends { tags: string[] }>(posts: CollectionEntry<T>[]): string[] {
+export function getAllTags(posts: Post[]): string[] {
     const tags = posts.flatMap((post) => post.data.tags);
     return [...new Set(tags)];
 }
 
-export function getUniqueTags<T extends { tags: string[] }>(posts: CollectionEntry<T>[]): string[] {
+export function getUniqueTags(posts: Post[]): string[] {
     return [...new Set(posts.flatMap((post) => post.data.tags))];
 }
 
-export function filterPostsByTag<T extends { tags: string[] }>(posts: CollectionEntry<T>[], tag: string): CollectionEntry<T>[] {
+export function filterPostsByTag(posts: Post[], tag: string): Post[] {
     return posts.filter((post) => post.data.tags.includes(tag));
 }
