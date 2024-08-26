@@ -118,5 +118,5 @@ const hasTableOfContents = headings && headings.length > 0;
 
 <script>
     import { initSmoothScroll } from "../scripts/smoothScroll";
-    initSmoothScroll();
+    initSmoothScroll('.toc a[href^="#"], .sidebar-nav a[href^="#"]');
 </script>

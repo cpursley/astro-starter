@@ -7,7 +7,7 @@ interface Props {
 const { tags, baseUrl = "/blog/tags/" } = Astro.props;
 ---
 
-<div class="flex flex-wrap gap-2">
+<div class="flex flex-wrap gap-2 mb-4">
     {
         tags.map((tag: string) => (
             <a

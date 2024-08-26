@@ -1,10 +1,8 @@
-// src/scripts/smoothScroll.ts
-
-export function initSmoothScroll() {
+export function initSmoothScroll(selector: string = 'a[href^="#"]') {
     document.addEventListener('DOMContentLoaded', () => {
-        const tocLinks = document.querySelectorAll('.toc a[href^="#"]');
+        const links = document.querySelectorAll(selector);
 
-        tocLinks.forEach((link) => {
+        links.forEach((link) => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetId = (link as HTMLAnchorElement).getAttribute('href');
