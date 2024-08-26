@@ -9,6 +9,12 @@
       "@layouts/*": [
         "src/layouts/*"
       ]
-    }
+    },
+    "strictNullChecks": true,
+    "allowJs": true,
+    "types": [
+      "astro/client"
+    ],
+    "moduleResolution": "node"
   }
 }

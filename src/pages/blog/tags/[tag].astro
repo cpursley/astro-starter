@@ -8,12 +8,20 @@ import { getUniqueTags, filterPostsByTag } from "@/scripts/utils";
 
 const t = useTranslations();
 
-export async function getStaticPaths() {
-    const allPosts = await getCollection("blog");
-    const uniqueTags = getUniqueTags(allPosts);
+interface Props {
+    posts: CollectionEntry<"blog">[];
+    allTags: string[];
+}
 
-    return uniqueTags.map((tag) => {
-        const filteredPosts = filterPostsByTag(allPosts, tag);
+export async function getStaticPaths() {
+    const allPosts: CollectionEntry<"blog">[] = await getCollection("blog");
+    const uniqueTags: string[] = getUniqueTags(allPosts);
+
+    return uniqueTags.map((tag: string) => {
+        const filteredPosts: CollectionEntry<"blog">[] = filterPostsByTag(
+            allPosts,
+            tag,
+        );
         return {
             params: { tag },
             props: { posts: filteredPosts, allTags: uniqueTags },
@@ -22,16 +30,20 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.params as { tag: string };
-const { posts, allTags } = Astro.props as {
-    posts: CollectionEntry<"blog">[];
-    allTags: string[];
-};
+const { posts, allTags } = Astro.props as Props;
 
-const metaProps = {
+interface MetaProps {
+    siteName: string;
+    pageTitle: string;
+    pageDescription: string;
+    pageUrl: string;
+}
+
+const metaProps: MetaProps = {
     siteName: t("siteMetadata.title"),
     pageTitle: `Blog Posts Tagged "${tag}"`,
     pageDescription: `These are blog posts tagged with "${tag}"`,
-    pageUrl: t("siteMetadata.url") + "/tags/" + tag,
+    pageUrl: `${t("siteMetadata.url")}/tags/${tag}`,
 };
 ---
 
