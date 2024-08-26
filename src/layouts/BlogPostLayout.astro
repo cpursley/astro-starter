@@ -5,7 +5,6 @@ import TagList from "@/components/TagList.astro";
 import FormattedDate from "@/components/FormattedDate.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import { useTranslations } from "@/i18n";
-import { initSmoothScroll } from "../scripts/smoothScroll";
 
 interface Frontmatter {
     author: string;
@@ -44,7 +43,7 @@ const hasTableOfContents = headings && headings.length > 0;
 ---
 
 <BaseLayout {...metaProps} pageTitle={title}>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
         <div class="flex flex-col lg:flex-row lg:space-x-8">
             <div class="lg:w-1/4">
                 <nav class="mb-8">

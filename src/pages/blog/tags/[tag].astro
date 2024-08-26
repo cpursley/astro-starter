@@ -1,49 +1,59 @@
 ---
+import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import PostCard from "@/components/PostCard.astro";
+import BlogPostList from "@/components/BlogPostList.astro";
+import TagList from "@/components/TagList.astro";
 import { useTranslations } from "@/i18n";
-import type { MarkdownInstance } from "astro";
+import { getUniqueTags, filterPostsByTag } from "@/scripts/utils";
 
 const t = useTranslations();
 
-interface Frontmatter {
-    tags: string[];
-    title: string;
-}
-
 export async function getStaticPaths() {
-    const allPosts: MarkdownInstance<Frontmatter>[] =
-        await Astro.glob<MarkdownInstance<Frontmatter>>("../*.md");
-
-    const uniqueTags: string[] = [
-        ...new Set(allPosts.flatMap((post) => post.frontmatter.tags)),
-    ];
+    const allPosts = await getCollection("blog");
+    const uniqueTags = getUniqueTags(allPosts);
 
     return uniqueTags.map((tag) => {
-        const filteredPosts = allPosts.filter((post) =>
-            post.frontmatter.tags.includes(tag),
-        );
+        const filteredPosts = filterPostsByTag(allPosts, tag);
         return {
             params: { tag },
-            props: { posts: filteredPosts },
+            props: { posts: filteredPosts, allTags: uniqueTags },
         };
     });
 }
 
 const { tag } = Astro.params as { tag: string };
-const { posts } = Astro.props as { posts: MarkdownInstance<Frontmatter>[] };
+const { posts, allTags } = Astro.props as {
+    posts: CollectionEntry<"blog">[];
+    allTags: string[];
+};
 
 const metaProps = {
     siteName: t("siteMetadata.title"),
-    pageTitle: `Blog Post Tagged ${tag}`,
-    pageDescription: `These are blog posts tagged ${tag}`,
+    pageTitle: `Blog Posts Tagged "${tag}"`,
+    pageDescription: `These are blog posts tagged with "${tag}"`,
     pageUrl: t("siteMetadata.url") + "/tags/" + tag,
 };
 ---
 
 <BaseLayout {...metaProps}>
-    <p>Posts tagged with {tag}</p>
-    <ul>
-        {posts.map((post) => <PostCard {post} />)}
-    </ul>
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row lg:space-x-8">
+            <div class="lg:w-1/4">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                    {metaProps.pageTitle}
+                </h1>
+                <div class="sticky top-8">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Tags</h2>
+                    <TagList tags={allTags} />
+                </div>
+            </div>
+            <div class="lg:w-3/4">
+                <BlogPostList
+                    posts={posts}
+                    tags={allTags}
+                    showSidebar={false}
+                />
+            </div>
+        </div>
+    </div>
 </BaseLayout>

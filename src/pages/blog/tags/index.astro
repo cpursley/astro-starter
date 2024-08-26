@@ -1,9 +1,15 @@
 ---
+import { getCollection, type CollectionEntry } from "astro:content";
 import { useTranslations } from "@/i18n";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Tags from "@/components/Tags.astro";
-const allPosts = await Astro.glob("../*.md");
-const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
+import TagList from "@/components/TagList.astro";
+
+const allPosts: CollectionEntry<"blog">[] = await getCollection("blog");
+const tags: string[] = [
+    ...new Set(
+        allPosts.flatMap((post: CollectionEntry<"blog">) => post.data.tags),
+    ),
+];
 const t = useTranslations();
 
 const metaProps = {
@@ -15,5 +21,10 @@ const metaProps = {
 ---
 
 <BaseLayout {...metaProps}>
-    <Tags tags={tags} />
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+            {metaProps.pageTitle}
+        </h1>
+        <TagList tags={tags} />
+    </div>
 </BaseLayout>

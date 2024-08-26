@@ -1,14 +1,20 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import BlogPostList from "@/components/BlogPostList.astro";
 import TagList from "@/components/TagList.astro";
 import { useTranslations } from "@/i18n";
-import { Image } from "astro:assets";
-import FormattedDate from "@/components/FormattedDate.astro";
+import {
+    filterPublishedPosts,
+    sortPostsByDate,
+    getAllTags,
+} from "../../scripts/utils";
 
-const allPosts = await Astro.glob("../blog/*.md");
-const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
+const allPosts = await getCollection("blog");
+const publishedPosts = filterPublishedPosts(allPosts);
+const posts = sortPostsByDate(publishedPosts);
+const tags = getAllTags(allPosts);
 const t = useTranslations();
-
 const metaProps = {
     siteName: t("siteMetadata.title"),
     pageTitle: t("pages.blog.title"),
@@ -18,71 +24,19 @@ const metaProps = {
 ---
 
 <BaseLayout {...metaProps}>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
         <div class="flex flex-col lg:flex-row lg:space-x-8">
             <div class="lg:w-1/4">
                 <h1 class="text-4xl font-bold text-gray-900 mb-4">
                     {metaProps.pageTitle}
                 </h1>
-
                 <div class="sticky top-8">
                     <h2 class="text-xl font-bold text-gray-900 mb-4">Tags</h2>
                     <TagList tags={tags} />
                 </div>
             </div>
-
             <div class="lg:w-3/4">
-                <div class="space-y-10 mb-12">
-                    {
-                        allPosts.map((post) => (
-                            <div class="border-b border-gray-200 pb-8">
-                                <a href={post.url} class="block group">
-                                    {post.frontmatter.image && (
-                                        <Image
-                                            src={post.frontmatter.image.url}
-                                            alt={post.frontmatter.image.alt}
-                                            width={800}
-                                            height={400}
-                                            class="w-full h-64 object-cover rounded-lg shadow-md mb-4 transition-transform group-hover:scale-105"
-                                        />
-                                    )}
-                                    <h2 class="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
-                                        {post.frontmatter.title}
-                                    </h2>
-                                </a>
-                                <div class="flex items-center text-sm text-gray-500 mb-2">
-                                    <span>{post.frontmatter.author}</span>
-                                    <span class="mx-2">•</span>
-                                    <FormattedDate
-                                        date={post.frontmatter.pubDate}
-                                    />
-                                </div>
-                                <p class="text-gray-600 mb-4">
-                                    {post.frontmatter.description}
-                                </p>
-                                <a
-                                    href={post.url}
-                                    class="text-blue-600 hover:text-blue-800 font-medium"
-                                >
-                                    Read more &rarr;
-                                </a>
-                            </div>
-                        ))
-                    }
-                </div>
-
-                <div class="flex justify-center items-center space-x-2 mb-12">
-                    {
-                        [1, 2, 3, 4, 5].map((page) => (
-                            <a
-                                href="#"
-                                class={`px-3 py-1 rounded ${page === 1 ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700"} hover:bg-blue-500 hover:text-white transition`}
-                            >
-                                {page}
-                            </a>
-                        ))
-                    }
-                </div>
+                <BlogPostList posts={posts} tags={tags} showSidebar={false} />
             </div>
         </div>
     </div>
