@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import BaseLayout from "./BaseLayout.astro";
 import TagList from "@/components/TagList.astro";
 import FormattedDate from "@/components/FormattedDate.astro";
-import TableOfContents from "@/components/TableOfContents.astro";
+import BlogPostTOC from "@/components/BlogPostTOC.astro";
 import { useTranslations } from "@/i18n";
 
 interface Frontmatter {
@@ -39,7 +39,7 @@ const metaProps = {
     pageUrl: t("siteMetadata.url") + url,
 };
 
-const hasTableOfContents = headings && headings.length > 0;
+const hasBlogPostTOC = headings && headings.length > 0;
 ---
 
 <BaseLayout {...metaProps} pageTitle={title}>
@@ -61,13 +61,13 @@ const hasTableOfContents = headings && headings.length > 0;
                     </div>
 
                     {
-                        hasTableOfContents && (
+                        hasBlogPostTOC && (
                             <div>
                                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                                     Table Of Contents
                                 </h2>
                                 <div class="mb-8">
-                                    <TableOfContents headings={headings} />
+                                    <BlogPostTOC headings={headings} />
                                 </div>
                             </div>
                         )
