@@ -1,5 +1,7 @@
 ---
 import { getCollection } from "astro:content";
+import type { GetStaticPaths, Page } from "astro";
+import type { CollectionEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BlogList from "@/components/blog/BlogList.astro";
 import TagList from "@/components/blog/TagList.astro";
@@ -10,10 +12,24 @@ import {
     getAllTags,
 } from "../../scripts/utils";
 
-const allPosts = await getCollection("blog");
-const publishedPosts = filterPublishedPosts(allPosts);
-const posts = sortPostsByDate(publishedPosts);
-const tags = getAllTags(allPosts);
+export const getStaticPaths = (async ({ paginate }) => {
+    const allPosts = await getCollection("blog");
+    const publishedPosts = filterPublishedPosts(allPosts);
+    const sortedPosts = sortPostsByDate(publishedPosts);
+    const tags = getAllTags(allPosts);
+
+    return paginate(sortedPosts, {
+        pageSize: 12,
+        props: { tags },
+    });
+}) satisfies GetStaticPaths;
+
+interface Props {
+    page: Page<CollectionEntry<"blog">>;
+    tags: string[];
+}
+
+const { page, tags } = Astro.props;
 const t = useTranslations();
 const metaProps = {
     siteName: t("siteMetadata.title"),
@@ -36,7 +52,12 @@ const metaProps = {
                 </div>
             </div>
             <div class="lg:w-3/4">
-                <BlogList posts={posts} tags={tags} showSidebar={false} />
+                <BlogList
+                    posts={page.data}
+                    tags={tags}
+                    showSidebar={false}
+                    pager={page}
+                />
             </div>
         </div>
     </div>
