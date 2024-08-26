@@ -12,6 +12,7 @@
     },
     "strictNullChecks": true,
     "allowJs": true,
+    "allowSyntheticDefaultImports": true,
     "types": [
       "astro/client"
     ],
