@@ -18,24 +18,39 @@ npm install && npm run dev
 
 ## 📁 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+Inside Astro Starter, you'll see the following folders and files:
 
 ```text
 /
 ├── public/
 ├── src/
+│   ├── components/
+│   ├── content/
+│   │   └── blog/
+│   │       ├── post-1.md
+│   │       └── post-2.md
+│   ├── data/
+│   │   ├── footer.ts
+│   │   └── navigation.ts
+│   ├── i18n/
+│   │   └── ui.ts
 │   └── pages/
-│       └── index.astro
+│       ├── blog/
+│       │   └── [...page].astro
+│       ├── index.astro
 │       └── about.astro
-│       └── blog.astro
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name. To add a blog post, create a new `.md` file in `src/content/blog/`.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+The data folder contains is where you can configure the links and other elemenets that are used in the site.
+
+The i18n folder is where you can configure the text that is used in the various components.
 
 Any static assets, like images, can be placed in the `public/` directory.
+
+
 
 ## 🎨 Extend / Customize
 
