@@ -22,3 +22,42 @@ Welcome to my _new blog_ about learning Astro! Here, I will share my learning jo
 ## What's next
 
 I will finish the Astro tutorial, and then keep adding more posts. Watch this space for more to come.
+
+## Diving Deeper into Astro
+
+### Components and Layouts
+Astro provides a powerful component system that allows for reusable UI elements. Here's what I've learned:
+
+1. **Creating Components**
+   - Components are created in `.astro` files
+   - They can accept props for dynamic content
+   - Example:
+     ```astro
+     ---
+     const {title} = Astro.props;
+     ---
+     <h1>{title}</h1>
+     ```
+
+2. **Using Layouts**
+   - Layouts help maintain consistency across pages
+   - They can be applied to both `.astro` and `.md` files
+
+### Styling in Astro
+Astro offers multiple ways to style your website:
+
+- Inline styles
+- Scoped styles
+- Global styles
+- CSS Modules
+
+#### Example of Scoped Styles
+```astro
+<style>
+  h1 {
+    color: purple;
+    font-size: 4rem;
+  }
+</style>
+
+<h1>Styled Heading</h1>

@@ -1,0 +1,75 @@
+---
+interface Heading {
+    depth: number;
+    text: string;
+    slug: string;
+    subheadings: Heading[];
+}
+
+interface Props {
+    headings: {
+        depth: number;
+        text: string;
+        slug: string;
+    }[];
+}
+
+const { headings } = Astro.props;
+
+function buildToc(headings: Props["headings"]): Heading[] {
+    const toc: Heading[] = [];
+    const parentHeadings = new Map<number, Heading>();
+    headings.forEach((h) => {
+        const heading: Heading = {
+            depth: h.depth,
+            text: h.text,
+            slug: h.slug,
+            subheadings: [],
+        };
+
+        if (h.depth === 2) {
+            toc.push(heading);
+        } else {
+            const parent = parentHeadings.get(h.depth - 1);
+            if (parent) {
+                parent.subheadings.push(heading);
+            }
+        }
+        parentHeadings.set(h.depth, heading);
+    });
+    return toc;
+}
+
+const toc = buildToc(headings);
+---
+
+<nav class="toc">
+    <ul class="space-y-2">
+        {
+            toc.map((heading) => (
+                <li>
+                    <a
+                        href={`#${heading.slug}`}
+                        class="toc-link text-blue-600 hover:text-blue-800"
+                    >
+                        {heading.text}
+                    </a>
+                    {heading.subheadings.length > 0 && (
+                        <ul class="ml-4 mt-2 space-y-2">
+                            {heading.subheadings.map((subheading) => (
+                                <li>
+                                    <a
+                                        href={`#${subheading.slug}`}
+                                        class="toc-link text-blue-600 hover:text-blue-800"
+                                    >
+                                        {subheading.text}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </li>
+            ))
+        }
+    </ul>
+</nav>

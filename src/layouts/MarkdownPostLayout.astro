@@ -3,9 +3,33 @@ import { Image } from "astro:assets";
 import BaseLayout from "./BaseLayout.astro";
 import TagList from "@/components/TagList.astro";
 import FormattedDate from "@/components/FormattedDate.astro";
+import TableOfContents from "@/components/TableOfContents.astro";
 import { useTranslations } from "@/i18n";
+import { initSmoothScroll } from "../scripts/smoothScroll";
 
-const { frontmatter, url } = Astro.props;
+interface Frontmatter {
+    author: string;
+    description: string;
+    image?: {
+        url: string;
+        alt: string;
+    };
+    pubDate: Date;
+    tags: string[];
+    title: string;
+}
+
+interface Props {
+    frontmatter: Frontmatter;
+    url: string;
+    headings: {
+        depth: number;
+        text: string;
+        slug: string;
+    }[];
+}
+
+const { frontmatter, url, headings } = Astro.props;
 const { author, description, image, pubDate, tags, title } = frontmatter;
 const t = useTranslations();
 
@@ -16,11 +40,7 @@ const metaProps = {
     pageUrl: t("siteMetadata.url") + url,
 };
 
-// Fetch all posts to get all tags
-const allPosts = await Astro.glob("../pages/blog/*.md");
-const allTags = [
-    ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
-];
+const hasTableOfContents = headings && headings.length > 0;
 ---
 
 <BaseLayout {...metaProps} pageTitle={title}>
@@ -33,9 +53,26 @@ const allTags = [
                     </a>
                 </nav>
 
-                <div class="sticky top-8">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Tags</h2>
-                    <TagList tags={allTags} />
+                <div class="sticky top-8 space-y-8">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">
+                            Tags
+                        </h2>
+                        <TagList tags={tags} />
+                    </div>
+
+                    {
+                        hasTableOfContents && (
+                            <div>
+                                <h2 class="text-xl font-bold text-gray-900 mb-4">
+                                    Table Of Contents
+                                </h2>
+                                <div class="mb-8">
+                                    <TableOfContents headings={headings} />
+                                </div>
+                            </div>
+                        )
+                    }
                 </div>
             </div>
 
@@ -78,3 +115,8 @@ const allTags = [
         </div>
     </div>
 </BaseLayout>
+
+<script>
+    import { initSmoothScroll } from "../scripts/smoothScroll";
+    initSmoothScroll();
+</script>
