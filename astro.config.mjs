@@ -15,6 +15,6 @@ export default defineConfig({
     sitemap(),
     robotsTxt()
   ],
-  output: "static",
+  output: "hybrid",
   adapter: vercel()
 });

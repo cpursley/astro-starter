@@ -44,7 +44,7 @@ Inside Astro Starter, you'll see the following folders and files:
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name. To add a blog post, create a new `.md` file in `src/content/blog/`.
 
-The data folder contains is where you can configure the links and other elemenets that are used in the site.
+The data folder is where you can configure the links and other elements that are used in the site.
 
 The i18n folder is where you can configure the text that is used in the various components.
 
