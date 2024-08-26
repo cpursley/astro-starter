@@ -2,7 +2,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import { useTranslations } from "@/i18n";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import TagList from "@/components/TagList.astro";
+import TagList from "@/components/blog/TagList.astro";
 
 const allPosts: CollectionEntry<"blog">[] = await getCollection("blog");
 const tags: string[] = [

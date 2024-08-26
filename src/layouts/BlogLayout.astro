@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import BaseLayout from "./BaseLayout.astro";
-import TagList from "@/components/TagList.astro";
-import FormattedDate from "@/components/FormattedDate.astro";
-import BlogPostTOC from "@/components/BlogPostTOC.astro";
+import TagList from "@/components/blog/TagList.astro";
+import FormattedDate from "@/components/blog/FormattedDate.astro";
+import TableOfContents from "@/components/blog/TableOfContents.astro";
 import { useTranslations } from "@/i18n";
 
 interface Frontmatter {
@@ -39,7 +39,7 @@ const metaProps = {
     pageUrl: t("siteMetadata.url") + url,
 };
 
-const hasBlogPostTOC = headings && headings.length > 0;
+const hasTableOfContents = headings && headings.length > 0;
 ---
 
 <BaseLayout {...metaProps} pageTitle={title}>
@@ -61,13 +61,13 @@ const hasBlogPostTOC = headings && headings.length > 0;
                     </div>
 
                     {
-                        hasBlogPostTOC && (
+                        hasTableOfContents && (
                             <div>
                                 <h2 class="text-xl font-bold text-gray-900 mb-4">
                                     Table Of Contents
                                 </h2>
                                 <div class="mb-8">
-                                    <BlogPostTOC headings={headings} />
+                                    <TableOfContents headings={headings} />
                                 </div>
                             </div>
                         )

@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import BlogPostList from "@/components/BlogPostList.astro";
-import TagList from "@/components/TagList.astro";
+import BlogList from "@/components/blog/BlogList.astro";
+import TagList from "@/components/blog/TagList.astro";
 import { useTranslations } from "@/i18n";
 import {
     filterPublishedPosts,
@@ -36,7 +36,7 @@ const metaProps = {
                 </div>
             </div>
             <div class="lg:w-3/4">
-                <BlogPostList posts={posts} tags={tags} showSidebar={false} />
+                <BlogList posts={posts} tags={tags} showSidebar={false} />
             </div>
         </div>
     </div>
