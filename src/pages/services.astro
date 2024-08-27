@@ -1,0 +1,99 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { useTranslations } from "@/i18n";
+import StarRating from "@/components/StarRating.astro";
+
+interface Service {
+    id: number;
+    title: string;
+    price: number;
+    description: string;
+    category: string;
+    image: string;
+    rating: {
+        rate: number;
+        count: number;
+    };
+}
+
+const t = useTranslations();
+
+const metaProps = {
+    siteName: t("siteMetadata.title"),
+    pageTitle: t("pages.services.title"),
+    pageDescription: t("pages.services.description"),
+    pageUrl: t("siteMetadata.url") + "/services",
+};
+
+const response = await fetch("https://fakestoreapi.com/products?limit=9");
+const services: Service[] = await response.json();
+---
+
+<BaseLayout {...metaProps}>
+    <div class="bg-gray-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:py-12 lg:px-8">
+            <div class="lg:text-center">
+                <h2
+                    class="text-base text-blue-600 font-semibold tracking-wide uppercase"
+                >
+                    {t("pages.services.subtitle")}
+                </h2>
+                <p
+                    class="mt-2 text-4xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-5xl"
+                >
+                    {t("pages.services.title")}
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    {t("pages.services.description")}
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div
+                    class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+                >
+                    {
+                        services.map((service: Service) => (
+                            <div class="bg-white overflow-hidden shadow-md rounded-lg flex flex-col transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl">
+                                <div class="p-5 flex-grow">
+                                    <div class="flex items-center justify-center h-48 bg-gray-200 rounded-md mb-4 overflow-hidden">
+                                        <img
+                                            src={service.image}
+                                            alt={service.title}
+                                            class="h-full object-contain transition duration-300 ease-in-out transform hover:scale-105"
+                                        />
+                                    </div>
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900 mb-2">
+                                        {service.title}
+                                    </h3>
+                                    <p class="text-sm text-gray-500 mb-4">
+                                        {service.description}
+                                    </p>
+                                </div>
+                                <div class="p-5 bg-gray-50 rounded-b-lg">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-2xl font-bold text-blue-600">
+                                            ${service.price.toFixed(2)}
+                                        </span>
+                                        <span class="text-sm text-gray-500">
+                                            Category: {service.category}
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <StarRating
+                                            rating={service.rating.rate}
+                                        />
+                                        <p class="ml-2 text-sm text-gray-700">
+                                            {service.rating.rate} (
+                                            {service.rating.count} reviews)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</BaseLayout>
