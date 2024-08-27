@@ -1,19 +1,57 @@
 ---
+import { Image } from "astro:assets";
+import FormattedDate from "./FormattedDate.astro";
+
+export interface Props {
+    post: {
+        slug: string;
+        data: {
+            image?: {
+                url: string;
+                alt: string;
+            };
+            title: string;
+            author: string;
+            pubDate: Date;
+            description: string;
+        };
+    };
+}
+
 const { post } = Astro.props;
-const { frontmatter, url } = post;
-const { title } = frontmatter;
 ---
 
-<div
-    class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
->
-    <div class="p-5">
-        <a href={url} class="block">
-            <h2
-                class="text-xl font-semibold text-gray-900 hover:text-blue-600 transition-colors duration-300"
-            >
-                {title}
-            </h2>
-        </a>
+<div class="border-b border-gray-200 pb-8">
+    <a href={`/blog/${post.slug}`} class="block group">
+        {
+            post.data.image && (
+                <Image
+                    src={post.data.image.url}
+                    alt={post.data.image.alt}
+                    width={800}
+                    height={400}
+                    class="w-full h-64 object-cover rounded-lg shadow-md mb-4 transition-transform group-hover:scale-105"
+                />
+            )
+        }
+        <h2
+            class="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2"
+        >
+            {post.data.title}
+        </h2>
+    </a>
+    <div class="flex items-center text-sm text-gray-500 mb-2">
+        <span>{post.data.author}</span>
+        <span class="mx-2">•</span>
+        <FormattedDate date={post.data.pubDate} />
     </div>
+    <p class="text-gray-600 mb-4">
+        {post.data.description}
+    </p>
+    <a
+        href={`/blog/${post.slug}`}
+        class="text-blue-600 hover:text-blue-800 font-medium"
+    >
+        Read more
+    </a>
 </div>

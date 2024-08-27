@@ -1,7 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
-import FormattedDate from "@/components/blog/FormattedDate.astro";
+import BlogCard from "./BlogCard.astro";
 import TagList from "@/components/blog/TagList.astro";
 
 export interface Props {
@@ -19,7 +18,6 @@ export interface Props {
 }
 
 const { posts, tags, showSidebar = true, pager } = Astro.props;
-console.log("Posts in BlogList:", posts.length);
 ---
 
 <div class="max-w-7xl mx-auto">
@@ -39,40 +37,7 @@ console.log("Posts in BlogList:", posts.length);
         <div class={showSidebar ? "lg:w-3/4" : "w-full"}>
             <div class="space-y-10 mb-12">
                 {posts.length === 0 && <p>No posts found.</p>}
-                {
-                    posts.map((post) => (
-                        <div class="border-b border-gray-200 pb-8">
-                            <a href={`/blog/${post.slug}`} class="block group">
-                                {post.data.image && (
-                                    <Image
-                                        src={post.data.image.url}
-                                        alt={post.data.image.alt}
-                                        width={800}
-                                        height={400}
-                                        class="w-full h-64 object-cover rounded-lg shadow-md mb-4 transition-transform group-hover:scale-105"
-                                    />
-                                )}
-                                <h2 class="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
-                                    {post.data.title}
-                                </h2>
-                            </a>
-                            <div class="flex items-center text-sm text-gray-500 mb-2">
-                                <span>{post.data.author}</span>
-                                <span class="mx-2">•</span>
-                                <FormattedDate date={post.data.pubDate} />
-                            </div>
-                            <p class="text-gray-600 mb-4">
-                                {post.data.description}
-                            </p>
-                            <a
-                                href={`/blog/${post.slug}`}
-                                class="text-blue-600 hover:text-blue-800 font-medium"
-                            >
-                                Read more
-                            </a>
-                        </div>
-                    ))
-                }
+                {posts.map((post) => <BlogCard post={post} />)}
             </div>
             {
                 pager && (
