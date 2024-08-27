@@ -1,20 +1,8 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { useTranslations } from "@/i18n";
-import StarRating from "@/components/StarRating.astro";
-
-interface Service {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    rating: {
-        rate: number;
-        count: number;
-    };
-}
+import ServiceCard from "@/components/services/ServiceCard.astro";
+import type { Service } from "@/components/services/ServiceCard.astro";
 
 const t = useTranslations();
 
@@ -53,43 +41,8 @@ const services: Service[] = await response.json();
                     class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
                 >
                     {
-                        services.map((service: Service) => (
-                            <div class="bg-white overflow-hidden shadow-md rounded-lg flex flex-col transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl">
-                                <div class="p-5 flex-grow">
-                                    <div class="flex items-center justify-center h-48 bg-gray-200 rounded-md mb-4 overflow-hidden">
-                                        <img
-                                            src={service.image}
-                                            alt={service.title}
-                                            class="h-full object-contain transition duration-300 ease-in-out transform hover:scale-105"
-                                        />
-                                    </div>
-                                    <h3 class="text-lg leading-6 font-medium text-gray-900 mb-2">
-                                        {service.title}
-                                    </h3>
-                                    <p class="text-sm text-gray-500 mb-4">
-                                        {service.description}
-                                    </p>
-                                </div>
-                                <div class="p-5 bg-gray-50 rounded-b-lg">
-                                    <div class="flex justify-between items-center mb-2">
-                                        <span class="text-2xl font-bold text-blue-600">
-                                            ${service.price.toFixed(2)}
-                                        </span>
-                                        <span class="text-sm text-gray-500">
-                                            Category: {service.category}
-                                        </span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <StarRating
-                                            rating={service.rating.rate}
-                                        />
-                                        <p class="ml-2 text-sm text-gray-700">
-                                            {service.rating.rate} (
-                                            {service.rating.count} reviews)
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                        services.map((service) => (
+                            <ServiceCard service={service} />
                         ))
                     }
                 </div>
