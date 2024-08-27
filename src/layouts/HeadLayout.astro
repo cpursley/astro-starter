@@ -1,5 +1,6 @@
 ---
 import { AstroSeo } from "@astrolib/seo";
+import { ViewTransitions } from "astro:transitions";
 
 const { pageDescription, pageTitle, pageUrl, siteName } = Astro.props;
 ---
@@ -24,4 +25,6 @@ const { pageDescription, pageTitle, pageUrl, siteName } = Astro.props;
     />
 
     <title>{pageTitle}</title>
+
+    <ViewTransitions />
 </head>
