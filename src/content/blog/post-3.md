@@ -3,7 +3,7 @@ title: My Third Blog Post
 author: Astro Learner
 description: "I had some challenges, but asking in the community really helped!"
 image:
-    url: "https://docs.astro.build/default-og-image.png"
+    url: "/images/blog/post-3.webp"
     alt: "The word astro against an illustration of planets and stars."
 pubDate: 2022-07-15
 tags: ["astro", "learning-in-public", "setbacks", "community"]

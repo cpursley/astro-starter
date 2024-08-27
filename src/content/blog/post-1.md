@@ -4,7 +4,7 @@ pubDate: 2022-07-01
 description: 'This is the first post of my new Astro blog.'
 author: 'Astro Learner'
 image:
-    url: "https://docs.astro.build/default-og-image.png"
+    url: "/images/blog/post-1.webp"
     alt: "The word astro against an illustration of planets and stars."
 tags: ["astro", "blogging", "learning-in-public"]
 ---

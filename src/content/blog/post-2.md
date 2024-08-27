@@ -3,7 +3,7 @@ title: My Second Blog Post
 author: Astro Learner
 description: "After learning some Astro, I couldn't stop!"
 image:
-    url: "https://docs.astro.build/default-og-image.png"
+    url: "/images/blog/post-2.webp"
     alt: "The word astro against an illustration of planets and stars."
 pubDate: 2022-07-08
 tags: ["astro", "blogging", "learning-in-public", "successes"]
