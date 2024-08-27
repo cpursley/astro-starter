@@ -20,7 +20,7 @@ export const ui = {
     // Services
     "pages.services.title": "Our Services",
     "pages.services.subtitle": "What we offer",
-    "pages.services.description": "This are our services",
+    "pages.services.description": "These are our services",
 
     // Blog
     "pages.blog.title": "Blog",
