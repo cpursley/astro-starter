@@ -1,5 +1,5 @@
 ---
-import Hamburger from "./Hamburger.astro";
+import MobileMenu from "./MobileMenu.astro";
 import Navigation from "./Navigation.astro";
 import { useTranslations } from "@/i18n";
 
@@ -25,7 +25,7 @@ const t = useTranslations();
             </div>
 
             <div class="md:hidden">
-                <Hamburger />
+                <MobileMenu />
             </div>
         </nav>
     </div>
@@ -41,12 +41,20 @@ const t = useTranslations();
 </header>
 
 <script>
-    const hamburger = document.querySelector(".hamburger");
-    const mobileMenu = document.getElementById("mobile-menu");
+    document.addEventListener("astro:page-load", () => {
+        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
 
-    if (hamburger && mobileMenu) {
-        hamburger.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-        });
-    }
+        if (mobileMenuToggle && mobileMenu) {
+            mobileMenuToggle.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+            });
+        }
+    });
 </script>
+
+<style>
+    .expanded {
+        display: block;
+    }
+</style>

@@ -2,7 +2,7 @@
 
 ---
 
-<button class="hamburger focus:outline-none">
+<button class="mobile-menu-toggle focus:outline-none">
     <span class="sr-only">Open main menu</span>
     <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
@@ -12,3 +12,16 @@
             d="M4 6h16M4 12h16m-7 6h7"></path>
     </svg>
 </button>
+
+<style>
+    .mobile-menu-toggle {
+        cursor: pointer;
+    }
+    .mobile-menu-toggle .line {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin-bottom: 5px;
+        background-color: currentColor;
+    }
+</style>

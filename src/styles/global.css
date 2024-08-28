@@ -1,19 +1,1 @@
 /* global.css */
-
-/* Hamburger menu styles */
-.hamburger {
-    cursor: pointer;
-}
-
-.hamburger .line {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin-bottom: 5px;
-    background-color: currentColor;
-}
-
-/* Utility class for showing mobile menu */
-.expanded {
-    display: block;
-}
