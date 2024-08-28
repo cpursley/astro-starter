@@ -1,0 +1,34 @@
+---
+import { getThemeConfig, getTheme } from "../scripts/themeConfig";
+
+const themeConfig = getThemeConfig(getTheme());
+---
+
+<style is:global define:vars={themeConfig.colors}>
+    :root {
+        --color-primary: var(--primary);
+        --color-secondary: var(--secondary);
+        --color-accent: var(--accent);
+        --color-background: var(--background);
+        --color-text: var(--text);
+        --color-muted: var(--muted);
+        --color-header-from: var(--headerFrom);
+        --color-header-to: var(--headerTo);
+        --color-header-solid: var(--headerSolid);
+        --color-footer: var(--footer);
+        --color-hero-bg: var(--heroBackground);
+        --color-hero-text: var(--heroText);
+        --color-hero-accent: var(--heroAccent);
+        --color-btn-primary: var(--buttonPrimary);
+        --color-btn-primary-hover: var(--buttonPrimaryHover);
+        --color-btn-secondary: var(--buttonSecondary);
+        --color-btn-secondary-text: var(--buttonSecondaryText);
+        --color-btn-secondary-hover: var(--buttonSecondaryHover);
+    }
+</style>
+
+<script define:vars={{ fonts: themeConfig.fonts }}>
+    document.documentElement.style.setProperty("--font-sans", fonts.sans);
+    document.documentElement.style.setProperty("--font-serif", fonts.serif);
+    document.documentElement.style.setProperty("--font-heading", fonts.heading);
+</script>

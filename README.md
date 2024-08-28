@@ -48,6 +48,8 @@ The data folder is where you can configure the links and other elements that are
 
 The i18n folder is where you can configure the text that is used in the various components.
 
+The config.yaml file is where you can change the theme (requires server restart)
+
 Any static assets, like images, can be placed in the `public/` directory.
 
 

@@ -4,11 +4,18 @@ import Navigation from "./Navigation.astro";
 import { useTranslations } from "@/i18n";
 
 const t = useTranslations();
+
+import { getCurrentThemeAttributes } from "@/scripts/themeConfig";
+
+const config = getCurrentThemeAttributes();
+
+const headerStyle =
+    config?.colors?.headerStyle === "gradient"
+        ? `bg-gradient-to-r from-header-from to-header-to`
+        : `bg-header-solid`;
 ---
 
-<header
-    class="bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg"
->
+<header class:list={[headerStyle, "text-white shadow-lg"]}>
     <div class="container mx-auto px-4 py-4">
         <nav class="flex justify-between items-center">
             <a
@@ -30,10 +37,7 @@ const t = useTranslations();
         </nav>
     </div>
 
-    <div
-        id="mobile-menu"
-        class="md:hidden hidden w-full bg-gradient-to-r from-blue-500 to-purple-600"
-    >
+    <div id="mobile-menu" class:list={[headerStyle, "w-full md:hidden hidden"]}>
         <div class="container mx-auto px-4 py-2">
             <Navigation />
         </div>
