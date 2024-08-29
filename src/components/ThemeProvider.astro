@@ -27,7 +27,7 @@ const themeConfig = getThemeConfig(getTheme());
     }
 </style>
 
-<script define:vars={{ fonts: themeConfig.fonts }}>
+<script is:inline define:vars={{ fonts: themeConfig.fonts }}>
     document.documentElement.style.setProperty("--font-sans", fonts.sans);
     document.documentElement.style.setProperty("--font-serif", fonts.serif);
     document.documentElement.style.setProperty("--font-heading", fonts.heading);
