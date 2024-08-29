@@ -1,0 +1,171 @@
+---
+import { useTranslations } from "@/i18n";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getFormUrl } from "../scripts/themeConfig";
+
+const formUrl = getFormUrl();
+const t = useTranslations();
+
+const metaProps = {
+    siteName: t("siteMetadata.title"),
+    pageTitle: t("pages.contact.title"),
+    pageDescription: t("pages.contact.description"),
+    pageUrl: t("siteMetadata.url") + "/contact",
+};
+---
+
+<BaseLayout {...metaProps}>
+    <div class="bg-gray-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:py-12 lg:px-8">
+            <div class="lg:text-center">
+                <h2
+                    class="text-base text-blue-600 font-semibold tracking-wide uppercase"
+                >
+                    {t("pages.contact.subtitle")}
+                </h2>
+                <p
+                    class="mt-2 text-4xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-5xl"
+                >
+                    {t("pages.contact.title")}
+                </p>
+                <p class="mt-4 text-xl text-gray-500">
+                    {t("pages.contact.description")}
+                </p>
+            </div>
+            <div
+                class="mt-10 max-w-2xl mx-auto bg-white shadow-md rounded-lg overflow-hidden"
+                x-data="{ 
+                    formSubmitted: false,
+                    isSubmitting: false,
+                    submitForm() {
+                        this.isSubmitting = true;
+                        fetch(formUrl, {
+                            method: 'POST',
+                            mode: 'no-cors',
+                            body: new FormData(this.$refs.form)
+                        })
+                        .then(() => {
+                            this.isSubmitting = false;
+                            this.formSubmitted = true;
+                            this.$refs.form.reset();
+                        })
+                        .catch(error => {
+                            this.isSubmitting = false;
+                            console.error('Error:', error);
+                            alert('An error occurred. Please try again.');
+                        });
+                    }
+                 }"
+            >
+                <form
+                    x-show="!formSubmitted"
+                    x-ref="form"
+                    @submit.prevent="submitForm"
+                    class="p-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
+                >
+                    <div>
+                        <label
+                            for="firstName"
+                            class="block text-sm font-medium text-gray-700"
+                        >
+                            First name<span class="ml-1 text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            required
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            placeholder="First name (required)"
+                        />
+                    </div>
+                    <div>
+                        <label
+                            for="lastName"
+                            class="block text-sm font-medium text-gray-700"
+                        >
+                            Last name
+                        </label>
+                        <input
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            placeholder="Last name"
+                        />
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label
+                            for="email"
+                            class="block text-sm font-medium text-gray-700"
+                        >
+                            Email<span class="ml-1 text-red-500">*</span>
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            placeholder="Your email address (required)"
+                        />
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label
+                            for="phone"
+                            class="block text-sm font-medium text-gray-700"
+                        >
+                            Phone number
+                        </label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            placeholder="Your phone number"
+                        />
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label
+                            for="message"
+                            class="block text-sm font-medium text-gray-700"
+                        >
+                            Message<span class="ml-1 text-red-500">*</span>
+                        </label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="4"
+                            required
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            placeholder="Your message"></textarea>
+                    </div>
+                    <div class="sm:col-span-2 flex justify-center">
+                        <button
+                            type="submit"
+                            :disabled="isSubmitting"
+                            class="w-full sm:w-2/3 px-8 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 uppercase transition-all duration-150 ease-in-out"
+                            :class="{ 'opacity-75 cursor-not-allowed': isSubmitting }"
+                        >
+                            <span
+                                x-text="isSubmitting ? 'Submitting...' : 'Submit'"
+                            ></span>
+                        </button>
+                    </div>
+                </form>
+                <div x-show="formSubmitted" class="p-6 text-center">
+                    <h3 class="text-2xl font-bold text-green-600 mb-4">
+                        Message Successfully Sent!
+                    </h3>
+                    <p class="text-gray-600">
+                        Thank you for contacting us. We'll get back to you soon.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</BaseLayout>
+
+<script define:vars={{ formUrl }}>
+    window.formUrl = formUrl;
+</script>

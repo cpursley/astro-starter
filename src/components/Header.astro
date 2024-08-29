@@ -15,7 +15,10 @@ const headerStyle =
         : `bg-header-solid`;
 ---
 
-<header class:list={[headerStyle, "text-white shadow-lg"]}>
+<header
+    x-data="{ mobileMenuOpen: false }"
+    class:list={[headerStyle, "text-white shadow-lg"]}
+>
     <div class="container mx-auto px-4 py-4">
         <nav class="flex justify-between items-center">
             <a
@@ -32,33 +35,47 @@ const headerStyle =
             </div>
 
             <div class="md:hidden">
-                <MobileMenu />
+                <button
+                    @click="mobileMenuOpen = !mobileMenuOpen"
+                    class="mobile-menu-toggle"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
             </div>
         </nav>
     </div>
 
-    <div id="mobile-menu" class:list={[headerStyle, "w-full md:hidden hidden"]}>
+    <div
+        x-show="mobileMenuOpen"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 max-h-0"
+        x-transition:enter-end="opacity-100 max-h-[400px]"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100 max-h-[400px]"
+        x-transition:leave-end="opacity-0 max-h-0"
+        class:list={[headerStyle, "w-full md:hidden overflow-hidden"]}
+        style="transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);"
+    >
         <div class="container mx-auto px-4 py-2">
             <Navigation />
         </div>
     </div>
 </header>
 
-<script>
-    document.addEventListener("astro:page-load", () => {
-        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
-        const mobileMenu = document.getElementById("mobile-menu");
-
-        if (mobileMenuToggle && mobileMenu) {
-            mobileMenuToggle.addEventListener("click", () => {
-                mobileMenu.classList.toggle("hidden");
-            });
-        }
-    });
-</script>
-
 <style>
-    .expanded {
-        display: block;
+    .mobile-menu-toggle {
+        @apply p-2 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white;
     }
 </style>

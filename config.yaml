@@ -4,6 +4,9 @@ site:
   base: '/'
   trailingSlash: false
 
+form:
+  url: 'https://webhook.site/a03658a2-c312-4975-a424-cb2c68721174'
+
 ui:
   theme: 'default'
 

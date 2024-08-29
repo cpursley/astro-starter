@@ -26,3 +26,7 @@ export function getCurrentThemeAttributes(): Record<string, any> {
     const currentTheme = getTheme();
     return getThemeConfig(currentTheme);
 }
+
+export function getFormUrl(): string {
+    return config.form?.url || '';
+}

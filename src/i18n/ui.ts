@@ -27,6 +27,11 @@ export const ui = {
     "pages.blog.subtitle": "Our blog",
     "pages.blog.description": "This is the blog",
 
+    // Blog
+    "pages.contact.title": "Contact Us",
+    "pages.contact.subtitle": "We'd love to hear from you. ",
+    "pages.contact.description": "Fill out the form below and we'll get back to you as soon as possible.",
+
     // Tags
     "pages.tags.title": `Blog Post Tags`,
     "pages.tags.description": "This are the blog post tags",
