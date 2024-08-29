@@ -4,8 +4,9 @@ import { getThemeConfig, getTheme } from "../scripts/themeConfig";
 const themeConfig = getThemeConfig(getTheme());
 ---
 
-<style is:global define:vars={themeConfig.colors}>
+<style is:global define:vars={{ ...themeConfig.colors, ...themeConfig.fonts }}>
     :root {
+        /* Colors */
         --color-primary: var(--primary);
         --color-secondary: var(--secondary);
         --color-accent: var(--accent);
@@ -24,11 +25,10 @@ const themeConfig = getThemeConfig(getTheme());
         --color-btn-secondary: var(--buttonSecondary);
         --color-btn-secondary-text: var(--buttonSecondaryText);
         --color-btn-secondary-hover: var(--buttonSecondaryHover);
+
+        /* Fonts */
+        --font-sans: var(--sans);
+        --font-serif: var(--serif);
+        --font-heading: var(--heading);
     }
 </style>
-
-<script is:inline define:vars={{ fonts: themeConfig.fonts }}>
-    document.documentElement.style.setProperty("--font-sans", fonts.sans);
-    document.documentElement.style.setProperty("--font-serif", fonts.serif);
-    document.documentElement.style.setProperty("--font-heading", fonts.heading);
-</script>
