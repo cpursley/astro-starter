@@ -1,0 +1,36 @@
+---
+import { useTranslations } from "@/i18n";
+import { getCurrentThemeAttributes } from "@/scripts/themeConfig";
+
+const t = useTranslations();
+const { header } = getCurrentThemeAttributes();
+const { logo, siteTitle } = header;
+---
+
+<a
+    href="/"
+    class="flex items-center space-x-3 transition duration-150 ease-in-out"
+>
+    {
+        logo.visible && (
+            <img
+                src={logo.src}
+                alt={logo.alt}
+                class:list={[`h-${logo.height}`, `w-${logo.width}`]}
+            />
+        )
+    }
+    {
+        siteTitle.visible && (
+            <span
+                class:list={[
+                    siteTitle.fontSize,
+                    siteTitle.fontWeight,
+                    "text-header-text hover:text-header-text-hover",
+                ]}
+            >
+                {t("siteMetadata.title") || siteTitle.text}
+            </span>
+        )
+    }
+</a>

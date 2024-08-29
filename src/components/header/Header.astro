@@ -1,33 +1,25 @@
 ---
-import Navigation from "./Navigation.astro";
+import Navigation from "@/components/header/Navigation.astro";
+import Logo from "@/components/header/Logo.astro";
 import { useTranslations } from "@/i18n";
-
-const t = useTranslations();
-
 import { getCurrentThemeAttributes } from "@/scripts/themeConfig";
 
-const config = getCurrentThemeAttributes();
+const t = useTranslations();
+const { header } = getCurrentThemeAttributes();
 
 const headerStyle =
-    config?.colors?.headerStyle === "gradient"
-        ? `bg-gradient-to-r from-header-from to-header-to`
-        : `bg-header-solid`;
+    header.style === "gradient"
+        ? "bg-gradient-to-r from-header-bg-gradient-from to-header-bg-gradient-to"
+        : "bg-header-bg-solid";
 ---
 
 <header
     x-data="{ mobileMenuOpen: false }"
-    class:list={[headerStyle, "text-white shadow-lg"]}
+    class:list={[headerStyle, "text-header-text", "shadow-lg"]}
 >
-    <div class="container mx-auto px-4 py-4">
-        <nav class="flex justify-between items-center">
-            <a
-                href="/"
-                class="flex items-center space-x-3 hover:opacity-80 transition duration-150"
-            >
-                <img src="/logo.svg" alt="Logo" class="h-8 w-auto" />
-                <span class="text-2xl font-bold">{t("siteMetadata.title")}</span
-                >
-            </a>
+    <div class="container px-4 py-4 mx-auto">
+        <nav class="flex items-center justify-between">
+            <Logo />
 
             <div class="hidden md:block">
                 <Navigation />
@@ -40,7 +32,7 @@ const headerStyle =
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6"
+                        class="w-6 h-6"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -67,7 +59,7 @@ const headerStyle =
         class:list={[headerStyle, "w-full md:hidden overflow-hidden"]}
         style="transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);"
     >
-        <div class="container mx-auto px-4 py-2">
+        <div class="container px-4 py-2 mx-auto">
             <Navigation />
         </div>
     </div>

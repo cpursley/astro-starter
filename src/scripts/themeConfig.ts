@@ -1,4 +1,5 @@
 import config from '../config/config';
+import type { Theme } from './themeTypes';
 
 type ThemeName = keyof typeof config.themes;
 
@@ -10,11 +11,11 @@ export function getTheme(): ThemeName {
     return (config.ui?.theme || 'default') as ThemeName;
 }
 
-export function getThemeConfig(themeName: ThemeName): typeof config.themes[ThemeName] {
-    return config.themes[themeName];
+export function getThemeConfig(themeName: ThemeName): Theme {
+    return config.themes[themeName] as Theme;
 }
 
-export function getCurrentThemeAttributes(): typeof config.themes[ThemeName] {
+export function getCurrentThemeAttributes(): Theme {
     const currentTheme = getTheme();
     return getThemeConfig(currentTheme);
 }

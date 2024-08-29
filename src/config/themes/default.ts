@@ -6,10 +6,6 @@ export const defaultTheme = {
         background: '#f9fafb',
         text: '#111827',
         muted: '#6b7280',
-        headerFrom: '#3b82f6',
-        headerTo: '#9333ea',
-        headerSolid: '#3b82f6',
-        headerStyle: 'gradient', // 'gradient' or 'solid'
         footer: '#111827',
         heroBackground: '#f9fafb',
         heroText: '#111827',
@@ -28,5 +24,30 @@ export const defaultTheme = {
         sans: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
         serif: 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
         heading: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFile, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+    },
+    header: {
+        style: 'gradient', // or 'solid'
+        background: {
+            gradient: {
+                from: '#3b82f6',
+                to: '#9333ea',
+            },
+            solid: '#3b82f6',
+        },
+        text: '#ffffff',
+        textHover: '#bfdbfe',
+        logo: {
+            visible: true,
+            src: '/logo.svg',
+            alt: 'Logo',
+            height: '8',
+            width: 'auto',
+        },
+        siteTitle: {
+            visible: true,
+            text: 'Astro Starter',
+            fontSize: 'text-2xl',
+            fontWeight: 'font-bold',
+        },
     },
 };
