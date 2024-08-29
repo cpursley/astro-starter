@@ -1,7 +1,8 @@
 ---
 import { useTranslations } from "@/i18n";
-import { footerLinks } from "@/data/footer";
+import { config } from "@/config/config";
 
+const footerLinks = config.navigation.footer.items;
 const currentYear = new Date().getFullYear();
 const t = useTranslations();
 ---

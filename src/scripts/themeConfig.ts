@@ -1,28 +1,20 @@
-import fs from 'fs';
-import yaml from 'js-yaml';
-import { fileURLToPath } from 'url';
-import path from 'path';
+import config from '../config/config';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+type ThemeName = keyof typeof config.themes;
 
-const configPath = path.join(__dirname, '..', '..', 'config.yaml');
-const configFile = fs.readFileSync(configPath, 'utf8');
-const config = yaml.load(configFile) as Record<string, any>;
-
-export function getConfig(): Record<string, any> {
+export function getConfig(): typeof config {
     return config;
 }
 
-export function getTheme(): string {
-    return config.ui?.theme || 'default';
+export function getTheme(): ThemeName {
+    return (config.ui?.theme || 'default') as ThemeName;
 }
 
-export function getThemeConfig(themeName: string): Record<string, any> {
-    return config.themes?.[themeName] || {};
+export function getThemeConfig(themeName: ThemeName): typeof config.themes[ThemeName] {
+    return config.themes[themeName];
 }
 
-export function getCurrentThemeAttributes(): Record<string, any> {
+export function getCurrentThemeAttributes(): typeof config.themes[ThemeName] {
     const currentTheme = getTheme();
     return getThemeConfig(currentTheme);
 }
