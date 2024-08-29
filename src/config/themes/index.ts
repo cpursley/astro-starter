@@ -1,7 +1,7 @@
 import { defaultTheme } from './default';
-import { careTheme } from './care';
+import { customTheme } from './custom';
 
 export const themes = {
     default: defaultTheme,
-    care: careTheme,
+    custom: customTheme,
 };

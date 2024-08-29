@@ -8,7 +8,7 @@ export const config = {
         trailingSlash: false,
     },
     ui: {
-        theme: 'default', // 'default', 'care'
+        theme: 'default', // 'default', 'custom', etc
     },
     themes,
     navigation: {

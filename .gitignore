@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # don't check in the build
 .vercel/
+
+# local files
+todo.md
