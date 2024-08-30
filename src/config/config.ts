@@ -28,7 +28,8 @@ export const config = {
         },
     },
     form: {
-        url: 'https://webhook.site/a03658a2-c312-4975-a424-cb2c68721174',
+        url: 'https://api.web3forms.com/submit',
+        key: 'b680592a-4b64-407d-baba-b5c3daab6b34'
     },
 };
 
