@@ -1,16 +1,15 @@
 ---
 import { useTranslations } from "@/i18n";
 import { getCurrentThemeAttributes } from "@/scripts/themeConfig";
+import { siteTitleClass } from "@/scripts/themeUtils";
 
 const t = useTranslations();
 const { header } = getCurrentThemeAttributes();
 const { logo, siteTitle } = header;
+const SiteTitleClass = siteTitleClass(siteTitle.class);
 ---
 
-<a
-    href="/"
-    class="flex items-center space-x-3 transition duration-150 ease-in-out"
->
+<a href="/" class="flex items-center space-x-3">
     {
         logo.visible && (
             <img
@@ -22,15 +21,7 @@ const { logo, siteTitle } = header;
     }
     {
         siteTitle.visible && (
-            <span
-                class:list={[
-                    siteTitle.fontSize,
-                    siteTitle.fontWeight,
-                    "text-header-text hover:text-header-text-hover",
-                ]}
-            >
-                {t("siteMetadata.title") || siteTitle.text}
-            </span>
+            <span class={SiteTitleClass}>{t("siteMetadata.title")}</span>
         )
     }
 </a>

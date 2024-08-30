@@ -43,11 +43,32 @@ export type Theme = {
             height: string;
             width: string;
         };
+        navigation: {
+            text: {
+                class: {
+                    color: string;
+                    hover: string;
+                    fontSize: string;
+                    fontWeight: string;
+                    textTransform: string;
+                    transition: string;
+                    padding: string;
+                    opts: string;
+                }
+            }
+        };
         siteTitle: {
             visible: boolean;
-            text: string;
-            fontSize: string;
-            fontWeight: string;
+            class: {
+                color: string;
+                hover: string;
+                fontSize: string;
+                fontWeight: string;
+                textTransform: string;
+                transition: string;
+                padding: string;
+                opts: string;
+            }
         };
     };
 };

@@ -43,11 +43,32 @@ export const defaultTheme = {
             height: '8',
             width: 'auto',
         },
+        navigation: {
+            text: {
+                class: {
+                    color: 'text-white',
+                    hover: 'hover:text-blue-200',
+                    fontSize: 'text-sm',
+                    fontWeight: 'font-medium',
+                    textTransform: 'uppercase',
+                    transition: 'transition duration-150 ease-in-out',
+                    padding: 'py-2 md:py-0',
+                    opts: 'tracking-wider'
+                }
+            }
+        },
         siteTitle: {
             visible: true,
-            text: 'Astro Starter',
-            fontSize: 'text-2xl',
-            fontWeight: 'font-bold',
+            class: {
+                color: 'text-white',
+                hover: 'hover:text-blue-200',
+                fontSize: 'text-2xl',
+                fontWeight: 'font-bold',
+                textTransform: null,
+                transition: 'transition duration-150 ease-in-out',
+                padding: null,
+                opts: null
+            }
         },
     },
 };
