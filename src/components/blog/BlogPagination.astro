@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    prevPost: CollectionEntry<"blog"> | null;
+    nextPost: CollectionEntry<"blog"> | null;
+}
+
+const { prevPost, nextPost } = Astro.props;
+---
+
+<div class="flex justify-between mt-8">
+    {
+        prevPost ? (
+            <a
+                href={`/blog/${prevPost.slug}`}
+                class="text-primary-600 hover:text-primary-800"
+            >
+                &larr; {prevPost.data.title}
+            </a>
+        ) : (
+            <span />
+        )
+    }
+    {
+        nextPost && (
+            <a
+                href={`/blog/${nextPost.slug}`}
+                class="ml-auto text-primary-600 hover:text-primary-800"
+            >
+                {nextPost.data.title} &rarr;
+            </a>
+        )
+    }
+</div>

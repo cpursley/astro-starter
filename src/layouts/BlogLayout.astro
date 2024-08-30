@@ -3,7 +3,9 @@ import BaseLayout from "./BaseLayout.astro";
 import TagList from "@/components/blog/TagList.astro";
 import TableOfContents from "@/components/blog/TableOfContents.astro";
 import BlogHeader from "@/components/blog/BlogHeader.astro";
+import BlogPagination from "@/components/blog/BlogPagination.astro";
 import { useTranslations } from "@/i18n";
+import type { CollectionEntry } from "astro:content";
 
 interface Frontmatter {
     author: string;
@@ -25,9 +27,11 @@ interface Props {
         text: string;
         slug: string;
     }[];
+    prevPost: CollectionEntry<"blog"> | null;
+    nextPost: CollectionEntry<"blog"> | null;
 }
 
-const { frontmatter, url, headings } = Astro.props;
+const { frontmatter, url, headings, prevPost, nextPost } = Astro.props;
 const { author, description, image, pubDate, tags, title } = frontmatter;
 const t = useTranslations();
 
@@ -91,6 +95,8 @@ const hasTableOfContents = headings && headings.length > 0;
                 >
                     <slot />
                 </main>
+
+                <BlogPagination prevPost={prevPost} nextPost={nextPost} />
             </article>
         </div>
     </div>

@@ -1,27 +1,34 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
-import BlogLayout from "../../layouts/BlogLayout.astro";
+import { getCollection } from "astro:content";
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import { filterPublishedPosts, sortPostsByDate } from "../../scripts/utils";
 
 export async function getStaticPaths() {
-    const blogEntries = await getCollection("blog");
-    return blogEntries.map((entry: CollectionEntry<"blog">) => ({
-        params: { slug: entry.slug },
-        props: { entry },
-    }));
+    const allPosts = await getCollection("blog");
+    const publishedPosts = filterPublishedPosts(allPosts);
+    const sortedPosts = sortPostsByDate(publishedPosts);
+
+    return sortedPosts.map((post, index) => {
+        const prevPost = sortedPosts[index + 1] || null;
+        const nextPost = sortedPosts[index - 1] || null;
+
+        return {
+            params: { slug: post.slug },
+            props: { post, prevPost, nextPost },
+        };
+    });
 }
 
-interface Props {
-    entry: CollectionEntry<"blog">;
-}
-
-const { entry } = Astro.props;
-const { Content, headings } = await entry.render();
+const { post, prevPost, nextPost } = Astro.props;
+const { Content, headings } = await post.render();
 ---
 
 <BlogLayout
-    frontmatter={entry.data}
-    url={`/blog/${entry.slug}`}
+    frontmatter={post.data}
+    url={`/blog/${post.slug}`}
     headings={headings}
+    prevPost={prevPost}
+    nextPost={nextPost}
 >
     <Content />
 </BlogLayout>
