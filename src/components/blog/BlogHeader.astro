@@ -1,0 +1,61 @@
+---
+import { Image } from "astro:assets";
+import FormattedDate from "@/components/blog/FormattedDate.astro";
+
+export interface Props {
+    title: string;
+    description: string;
+    author: string;
+    pubDate: Date;
+    image?: {
+        url: string;
+        alt: string;
+    };
+    isLink?: boolean;
+    slug?: string;
+}
+
+const {
+    title,
+    description,
+    author,
+    pubDate,
+    image,
+    isLink = false,
+    slug = "",
+} = Astro.props;
+---
+
+<div class={`mb-8 ${isLink ? "group" : ""}`}>
+    {
+        image && (
+            <Image
+                src={image.url}
+                alt={image.alt}
+                width={1200}
+                height={630}
+                format="webp"
+                class="object-cover w-full h-64 mb-4 rounded-lg shadow-md"
+            />
+        )
+    }
+    {
+        isLink ? (
+            <a href={`/blog/${slug}`} class="block">
+                <h1 class="mb-2 text-3xl font-bold text-gray-900 transition-colors group-hover:text-primary-600">
+                    {title}
+                </h1>
+            </a>
+        ) : (
+            <h1 class="mb-2 text-3xl font-bold text-gray-900">{title}</h1>
+        )
+    }
+    <div class="flex items-center mb-4 space-x-4 text-sm text-gray-500">
+        <span>By {author}</span>
+        <span>•</span>
+        <FormattedDate date={pubDate} />
+    </div>
+    <p class="mb-4 text-lg text-gray-600">
+        <em>{description}</em>
+    </p>
+</div>

@@ -1,9 +1,8 @@
 ---
-import { Image } from "astro:assets";
 import BaseLayout from "./BaseLayout.astro";
 import TagList from "@/components/blog/TagList.astro";
-import FormattedDate from "@/components/blog/FormattedDate.astro";
 import TableOfContents from "@/components/blog/TableOfContents.astro";
+import BlogHeader from "@/components/blog/BlogHeader.astro";
 import { useTranslations } from "@/i18n";
 
 interface Frontmatter {
@@ -43,7 +42,7 @@ const hasTableOfContents = headings && headings.length > 0;
 ---
 
 <BaseLayout {...metaProps} pageTitle={title}>
-    <div class="max-w-7xl mx-auto">
+    <div class="mx-auto max-w-7xl">
         <div class="flex flex-col lg:flex-row lg:space-x-8">
             <div class="lg:w-1/4">
                 <nav class="mb-8">
@@ -55,9 +54,9 @@ const hasTableOfContents = headings && headings.length > 0;
                     </a>
                 </nav>
 
-                <div class="sticky top-8 space-y-8">
+                <div class="sticky space-y-8 top-8">
                     <div>
-                        <h2 class="text-xl font-bold text-gray-900 mb-4">
+                        <h2 class="mb-4 text-xl font-bold text-gray-900">
                             Tags
                         </h2>
                         <TagList tags={tags} />
@@ -66,7 +65,7 @@ const hasTableOfContents = headings && headings.length > 0;
                     {
                         hasTableOfContents && (
                             <div>
-                                <h2 class="text-xl font-bold text-gray-900 mb-4">
+                                <h2 class="mb-4 text-xl font-bold text-gray-900">
                                     Table Of Contents
                                 </h2>
                                 <div class="mb-8">
@@ -79,37 +78,16 @@ const hasTableOfContents = headings && headings.length > 0;
             </div>
 
             <article class="lg:w-3/4">
-                <header class="mb-8">
-                    <h1 class="text-4xl font-bold text-gray-900 mb-4">
-                        {title}
-                    </h1>
-                    <p class="text-lg text-gray-600 mb-4">
-                        <em>{description}</em>
-                    </p>
-                    <div
-                        class="flex items-center space-x-4 text-sm text-gray-500"
-                    >
-                        <span>By {author}</span>
-                        <span>•</span>
-                        <FormattedDate date={pubDate} />
-                    </div>
-                </header>
-
-                {
-                    image && (
-                        <Image
-                            src={image.url}
-                            alt={image.alt}
-                            width={1200}
-                            height={630}
-                            format="webp"
-                            class="w-full h-64 object-cover rounded-lg shadow-md mb-8"
-                        />
-                    )
-                }
+                <BlogHeader
+                    title={title}
+                    description={description}
+                    author={author}
+                    pubDate={pubDate}
+                    image={image}
+                />
 
                 <main
-                    class="prose prose-lg max-w-none mb-8 prose-headings:text-gray-900 prose-a:text-primary-600 hover:prose-a:text-primary-800"
+                    class="mb-8 prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-primary-600 hover:prose-a:text-primary-800"
                 >
                     <slot />
                 </main>
