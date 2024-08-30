@@ -29,7 +29,7 @@ export const config = {
     },
     form: {
         url: 'https://api.web3forms.com/submit',
-        key: 'b680592a-4b64-407d-baba-b5c3daab6b34'
+        key: process.env.WEB3FORMS_KEY
     },
 };
 
