@@ -46,28 +46,28 @@ export type Theme = {
         navigation: {
             text: {
                 class: {
-                    color: string;
-                    hover: string;
-                    fontSize: string;
-                    fontWeight: string;
-                    textTransform: string;
-                    transition: string;
-                    padding: string;
-                    opts: string;
+                    color: string | null;
+                    hover: string | null;
+                    fontSize: string | null;
+                    fontWeight: string | null;
+                    textTransform: string | null;
+                    transition: string | null;
+                    padding: string | null;
+                    opts: string | null;
                 }
             }
         };
         siteTitle: {
             visible: boolean;
             class: {
-                color: string;
-                hover: string;
-                fontSize: string;
-                fontWeight: string;
-                textTransform: string;
-                transition: string;
-                padding: string;
-                opts: string;
+                color: string | null;
+                hover: string | null;
+                fontSize: string | null;
+                fontWeight: string | null;
+                textTransform: string | null;
+                transition: string | null;
+                padding: string | null;
+                opts: string | null;
             }
         };
     };

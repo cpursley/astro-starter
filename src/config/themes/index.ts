@@ -1,7 +1,7 @@
 import { defaultTheme } from './default';
-import { customTheme } from './custom';
+// import { customTheme } from './custom';
 
 export const themes = {
     default: defaultTheme,
-    custom: customTheme,
+    // custom: customTheme,
 };
