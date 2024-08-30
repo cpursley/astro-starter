@@ -40,14 +40,14 @@ const metaProps = {
 ---
 
 <BaseLayout {...metaProps}>
-    <div class="max-w-7xl mx-auto">
+    <div class="mx-auto max-w-7xl">
         <div class="flex flex-col lg:flex-row lg:space-x-8">
             <div class="lg:w-1/4">
-                <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                <h1 class="mb-4 text-4xl font-bold text-gray-900">
                     {metaProps.pageTitle}
                 </h1>
                 <div class="sticky top-8">
-                    <h2 class="text-xl font-bold text-gray-900 mb-4">Tags</h2>
+                    <h2 class="mb-4 text-xl font-bold text-gray-900">Tags</h2>
                     <TagList tags={tags} />
                 </div>
             </div>

@@ -9,12 +9,12 @@ export interface Props {
 const { currentPage, lastPage, prevUrl, nextUrl } = Astro.props;
 ---
 
-<div class="flex justify-between items-center mt-8">
+<div class="flex items-center justify-between mt-8">
     {
         prevUrl && (
             <a
                 href={prevUrl}
-                class="text-primary-600 hover:text-primary-800 font-medium"
+                class="font-medium text-primary-600 hover:text-primary-800"
             >
                 &larr; Previous
             </a>
@@ -27,7 +27,7 @@ const { currentPage, lastPage, prevUrl, nextUrl } = Astro.props;
         nextUrl && (
             <a
                 href={nextUrl}
-                class="text-primary-600 hover:text-primary-800 font-medium"
+                class="font-medium text-primary-600 hover:text-primary-800"
             >
                 Next &rarr;
             </a>

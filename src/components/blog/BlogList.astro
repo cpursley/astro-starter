@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import BlogCard from "./BlogCard.astro";
 import TagList from "@/components/blog/TagList.astro";
+import Pagination from "@/components/Pagination.astro";
 
 export interface Props {
     posts: CollectionEntry<"blog">[];
@@ -20,13 +21,13 @@ export interface Props {
 const { posts, tags, showSidebar = true, pager } = Astro.props;
 ---
 
-<div class="max-w-7xl mx-auto">
+<div class="mx-auto max-w-7xl">
     <div class="flex flex-col lg:flex-row lg:space-x-8">
         {
             showSidebar && (
                 <div class="lg:w-1/4">
                     <div class="sticky top-8">
-                        <h2 class="text-xl font-bold text-gray-900 mb-4">
+                        <h2 class="mb-4 text-xl font-bold text-gray-900">
                             Tags
                         </h2>
                         <TagList tags={tags} />
@@ -35,33 +36,18 @@ const { posts, tags, showSidebar = true, pager } = Astro.props;
             )
         }
         <div class={showSidebar ? "lg:w-3/4" : "w-full"}>
-            <div class="space-y-10 mb-12">
+            <div class="mb-12 space-y-10">
                 {posts.length === 0 && <p>No posts found.</p>}
                 {posts.map((post) => <BlogCard post={post} />)}
             </div>
             {
                 pager && (
-                    <div class="flex justify-between items-center mt-8">
-                        {pager.url.prev && (
-                            <a
-                                href={pager.url.prev}
-                                class="text-primary-600 hover:text-primary-800 font-medium"
-                            >
-                                &larr; Previous
-                            </a>
-                        )}
-                        <span class="text-gray-600">
-                            Page {pager.currentPage} of {pager.lastPage}
-                        </span>
-                        {pager.url.next && (
-                            <a
-                                href={pager.url.next}
-                                class="text-primary-600 hover:text-primary-800 font-medium"
-                            >
-                                Next &rarr;
-                            </a>
-                        )}
-                    </div>
+                    <Pagination
+                        currentPage={pager.currentPage}
+                        lastPage={pager.lastPage}
+                        prevUrl={pager.url.prev}
+                        nextUrl={pager.url.next}
+                    />
                 )
             }
         </div>
