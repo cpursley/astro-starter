@@ -2,6 +2,7 @@ import typography from '@tailwindcss/typography';
 import { getThemeConfig, getTheme } from './src/scripts/themeConfig';
 
 const themeConfig = getThemeConfig(getTheme());
+const { colors, fonts } = themeConfig;
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -9,31 +10,35 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				primary: themeConfig.colors.primary,
-				secondary: themeConfig.colors.secondary,
-				accent: themeConfig.colors.accent,
-				background: themeConfig.colors.background,
-				text: themeConfig.colors.text,
-				muted: themeConfig.colors.muted,
-				'header-bg-gradient-from': themeConfig.header.background.gradient.from,
-				'header-bg-gradient-to': themeConfig.header.background.gradient.to,
-				'header-bg-solid': themeConfig.header.background.solid,
-				// 'header-text': themeConfig.header.text,
-				// 'header-text-hover': themeConfig.header.textHover,
-				footer: themeConfig.colors.footer,
-				'hero-bg': themeConfig.colors.heroBackground,
-				'hero-text': themeConfig.colors.heroText,
-				'hero-accent': themeConfig.colors.heroAccent,
-				'btn-primary': themeConfig.colors.buttonPrimary,
-				'btn-primary-hover': themeConfig.colors.buttonPrimaryHover,
-				'btn-secondary': themeConfig.colors.buttonSecondary,
-				'btn-secondary-text': themeConfig.colors.buttonSecondaryText,
-				'btn-secondary-hover': themeConfig.colors.buttonSecondaryHover,
+				primary: {
+					50: colors.primary[50],
+					100: colors.primary[100],
+					200: colors.primary[200],
+					300: colors.primary[300],
+					400: colors.primary[400],
+					500: colors.primary[500],
+					600: colors.primary[600],
+					700: colors.primary[700],
+					800: colors.primary[800],
+					900: colors.primary[900],
+				},
+				secondary: {
+					50: colors.secondary[50],
+					100: colors.secondary[100],
+					200: colors.secondary[200],
+					300: colors.secondary[300],
+					400: colors.secondary[400],
+					500: colors.secondary[500],
+					600: colors.secondary[600],
+					700: colors.secondary[700],
+					800: colors.secondary[800],
+					900: colors.secondary[900],
+				},
 			},
 			fontFamily: {
-				sans: [themeConfig.fonts.sans],
-				serif: [themeConfig.fonts.serif],
-				heading: [themeConfig.fonts.heading],
+				sans: [fonts.sans],
+				serif: [fonts.serif],
+				heading: [fonts.heading],
 			},
 		},
 	},

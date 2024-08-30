@@ -7,9 +7,9 @@ const currentYear = new Date().getFullYear();
 const t = useTranslations();
 ---
 
-<footer class="bg-gray-900 text-gray-300 mt-auto">
-    <div class="container mx-auto px-4 py-6">
-        <div class="flex flex-col md:flex-row justify-between items-center">
+<footer class="mt-auto text-gray-300 bg-gray-900">
+    <div class="container px-4 py-6 mx-auto">
+        <div class="flex flex-col items-center justify-between md:flex-row">
             <div class="mb-4 md:mb-0">
                 <p class="text-sm">
                     &copy; {currentYear}
@@ -22,7 +22,7 @@ const t = useTranslations();
                     footerLinks.map((link) => (
                         <a
                             href={link.href}
-                            class="text-sm hover:text-white transition duration-150"
+                            class="text-sm transition duration-150 hover:text-gray-50"
                         >
                             {link.text}
                         </a>

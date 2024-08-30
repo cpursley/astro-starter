@@ -1,12 +1,10 @@
 ---
 import { useTranslations } from "@/i18n";
 import { getCurrentThemeAttributes } from "@/scripts/themeConfig";
-import { siteTitleClass } from "@/scripts/themeUtils";
 
 const t = useTranslations();
 const { header } = getCurrentThemeAttributes();
 const { logo, siteTitle } = header;
-const SiteTitleClass = siteTitleClass(siteTitle.class);
 ---
 
 <a href="/" class="flex items-center space-x-3">
@@ -21,7 +19,9 @@ const SiteTitleClass = siteTitleClass(siteTitle.class);
     }
     {
         siteTitle.visible && (
-            <span class={SiteTitleClass}>{t("siteMetadata.title")}</span>
+            <span class="text-2xl font-bold transition duration-150 ease-in-out text-gray-50 hover:text-primary-100">
+                {t("siteMetadata.title")}
+            </span>
         )
     }
 </a>

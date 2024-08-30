@@ -1,24 +1,20 @@
+type ColorScale = {
+    50: string;
+    100: string;
+    200: string;
+    300: string;
+    400: string;
+    500: string;
+    600: string;
+    700: string;
+    800: string;
+    900: string;
+};
+
 export type Theme = {
     colors: {
-        primary: string;
-        secondary: string;
-        accent: string;
-        background: string;
-        text: string;
-        muted: string;
-        footer: string;
-        heroBackground: string;
-        heroText: string;
-        heroAccent: string;
-        buttonPrimary: string;
-        buttonPrimaryHover: string;
-        buttonSecondary: string;
-        buttonSecondaryText: string;
-        buttonSecondaryHover: string;
-        success: string;
-        danger: string;
-        warning: string;
-        info: string;
+        primary: ColorScale,
+        secondary: ColorScale,
     };
     fonts: {
         sans: string;
@@ -27,15 +23,6 @@ export type Theme = {
     };
     header: {
         style: 'gradient' | 'solid';
-        background: {
-            gradient: {
-                from: string;
-                to: string;
-            };
-            solid: string;
-        };
-        text: string;
-        textHover: string;
         logo: {
             visible: boolean,
             src: string;
@@ -43,32 +30,8 @@ export type Theme = {
             height: string;
             width: string;
         };
-        navigation: {
-            text: {
-                class: {
-                    color: string | null;
-                    hover: string | null;
-                    fontSize: string | null;
-                    fontWeight: string | null;
-                    textTransform: string | null;
-                    transition: string | null;
-                    padding: string | null;
-                    opts: string | null;
-                }
-            }
-        };
         siteTitle: {
             visible: boolean;
-            class: {
-                color: string | null;
-                hover: string | null;
-                fontSize: string | null;
-                fontWeight: string | null;
-                textTransform: string | null;
-                transition: string | null;
-                padding: string | null;
-                opts: string | null;
-            }
         };
     };
 };

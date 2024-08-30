@@ -15,16 +15,16 @@ const metaProps = {
 ---
 
 <BaseLayout {...metaProps}>
-    <div class="bg-gray-50 overflow-hidden">
-        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:py-12 lg:px-8">
+    <div class="overflow-hidden bg-gray-50">
+        <div class="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:py-12 lg:px-8">
             <div class="lg:text-center">
                 <h2
-                    class="text-base text-blue-600 font-semibold tracking-wide uppercase"
+                    class="text-base font-semibold tracking-wide text-primary-600 uppercase"
                 >
                     {t("pages.contact.subtitle")}
                 </h2>
                 <p
-                    class="mt-2 text-4xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-5xl"
+                    class="mt-2 text-4xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-5xl"
                 >
                     {t("pages.contact.title")}
                 </p>
@@ -33,7 +33,7 @@ const metaProps = {
                 </p>
             </div>
             <div
-                class="mt-10 max-w-2xl mx-auto bg-white shadow-md rounded-lg overflow-hidden"
+                class="max-w-2xl mx-auto mt-10 overflow-hidden rounded-lg shadow-md bg-gray-50"
                 x-data="{ 
                     formSubmitted: false,
                     isSubmitting: false,
@@ -61,7 +61,7 @@ const metaProps = {
                     x-show="!formSubmitted"
                     x-ref="form"
                     @submit.prevent="submitForm"
-                    class="p-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
+                    class="grid grid-cols-1 p-6 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
                 >
                     <div>
                         <label
@@ -75,7 +75,7 @@ const metaProps = {
                             id="firstName"
                             name="firstName"
                             required
-                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                             placeholder="First name (required)"
                         />
                     </div>
@@ -90,7 +90,7 @@ const metaProps = {
                             type="text"
                             id="lastName"
                             name="lastName"
-                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                             placeholder="Last name"
                         />
                     </div>
@@ -106,7 +106,7 @@ const metaProps = {
                             id="email"
                             name="email"
                             required
-                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                             placeholder="Your email address (required)"
                         />
                     </div>
@@ -121,7 +121,7 @@ const metaProps = {
                             type="tel"
                             id="phone"
                             name="phone"
-                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                             placeholder="Your phone number"
                         />
                     </div>
@@ -137,14 +137,14 @@ const metaProps = {
                             name="message"
                             rows="4"
                             required
-                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                             placeholder="Your message"></textarea>
                     </div>
-                    <div class="sm:col-span-2 flex justify-center">
+                    <div class="flex justify-center sm:col-span-2">
                         <button
                             type="submit"
                             :disabled="isSubmitting"
-                            class="w-full sm:w-2/3 px-8 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 uppercase transition-all duration-150 ease-in-out"
+                            class="w-full px-8 py-3 text-base font-medium uppercase transition-all duration-150 ease-in-out bg-primary-600 border border-transparent rounded-md shadow-sm sm:w-2/3 text-gray-50 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                             :class="{ 'opacity-75 cursor-not-allowed': isSubmitting }"
                         >
                             <span
@@ -154,7 +154,7 @@ const metaProps = {
                     </div>
                 </form>
                 <div x-show="formSubmitted" class="p-6 text-center">
-                    <h3 class="text-2xl font-bold text-green-600 mb-4">
+                    <h3 class="mb-4 text-2xl font-bold text-green-600">
                         Message Successfully Sent!
                     </h3>
                     <p class="text-gray-600">

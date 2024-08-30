@@ -1,7 +1,7 @@
-import { defaultTheme } from './default';
-// import { customTheme } from './custom';
+import { blueTheme } from './blue';
+import { emeraldTheme } from './emerald';
 
 export const themes = {
-    default: defaultTheme,
-    // custom: customTheme,
+    blue: blueTheme,
+    emerald: emeraldTheme,
 };

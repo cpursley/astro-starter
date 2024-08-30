@@ -37,23 +37,23 @@ const teamMembers = [
 ---
 
 <BaseLayout {...metaProps}>
-    <div class="bg-white">
-        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:py-12 lg:px-8">
+    <div class="bg-gray-50">
+        <div class="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:py-12 lg:px-8">
             <div class="lg:text-center">
                 <h2
-                    class="text-base text-blue-600 font-semibold tracking-wide uppercase"
+                    class="text-base font-semibold tracking-wide text-primary-600 uppercase"
                 >
                     {t("pages.about.subtitle")}
                 </h2>
                 <p
-                    class="mt-2 text-4xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-5xl"
+                    class="mt-2 text-4xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-5xl"
                 >
                     Meet the people behind
-                    <span class="block text-blue-600 xl:inline"
+                    <span class="block text-primary-600 xl:inline"
                         >{t("siteMetadata.title")}</span
                     >
                 </p>
-                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                <p class="max-w-2xl mt-4 text-xl text-gray-500 lg:mx-auto">
                     We're a passionate group of individuals dedicated to
                     building amazing products and delivering exceptional
                     service.
@@ -69,16 +69,16 @@ const teamMembers = [
                             <li>
                                 <div class="space-y-4">
                                     <Image
-                                        class="object-cover shadow-lg rounded-lg w-full h-56"
+                                        class="object-cover w-full h-56 rounded-lg shadow-lg"
                                         src={member.image}
                                         alt={member.name}
                                         width={256}
                                         height={256}
                                     />
                                     <div class="space-y-2">
-                                        <div class="text-lg leading-6 font-medium space-y-1">
+                                        <div class="space-y-1 text-lg font-medium leading-6">
                                             <h3>{member.name}</h3>
-                                            <p class="text-blue-600">
+                                            <p class="text-primary-600">
                                                 {member.role}
                                             </p>
                                         </div>

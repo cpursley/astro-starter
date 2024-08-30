@@ -47,7 +47,10 @@ const hasTableOfContents = headings && headings.length > 0;
         <div class="flex flex-col lg:flex-row lg:space-x-8">
             <div class="lg:w-1/4">
                 <nav class="mb-8">
-                    <a href="/blog" class="text-blue-600 hover:text-blue-800">
+                    <a
+                        href="/blog"
+                        class="text-primary-600 hover:text-primary-800"
+                    >
                         &larr; Back to All Posts
                     </a>
                 </nav>
@@ -106,7 +109,7 @@ const hasTableOfContents = headings && headings.length > 0;
                 }
 
                 <main
-                    class="prose prose-lg max-w-none mb-8 prose-headings:text-gray-900 prose-a:text-blue-600 hover:prose-a:text-blue-800"
+                    class="prose prose-lg max-w-none mb-8 prose-headings:text-gray-900 prose-a:text-primary-600 hover:prose-a:text-primary-800"
                 >
                     <slot />
                 </main>

@@ -22,28 +22,28 @@ const { service } = Astro.props;
 ---
 
 <div
-    class="bg-white overflow-hidden shadow-md rounded-lg flex flex-col transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl"
+    class="flex flex-col overflow-hidden transition duration-300 ease-in-out transform rounded-lg shadow-md bg-gray-50 hover:-translate-y-1 hover:shadow-xl"
 >
-    <div class="p-5 flex-grow">
+    <div class="flex-grow p-5">
         <div
-            class="flex items-center justify-center h-48 bg-gray-200 rounded-md mb-4 overflow-hidden"
+            class="flex items-center justify-center h-48 mb-4 overflow-hidden bg-gray-200 rounded-md"
         >
             <img
                 src={service.image}
                 alt={service.title}
-                class="h-full object-contain transition duration-300 ease-in-out transform hover:scale-105"
+                class="object-contain h-full transition duration-300 ease-in-out transform hover:scale-105"
             />
         </div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900 mb-2">
+        <h3 class="mb-2 text-lg font-medium leading-6 text-gray-900">
             {service.title}
         </h3>
-        <p class="text-sm text-gray-500 mb-4">
+        <p class="mb-4 text-sm text-gray-500">
             {service.description}
         </p>
     </div>
-    <div class="p-5 bg-gray-50 rounded-b-lg">
-        <div class="flex justify-between items-center mb-2">
-            <span class="text-2xl font-bold text-blue-600">
+    <div class="p-5 rounded-b-lg bg-gray-50">
+        <div class="flex items-center justify-between mb-2">
+            <span class="text-2xl font-bold text-primary-600">
                 ${service.price.toFixed(2)}
             </span>
             <span class="text-sm text-gray-500">

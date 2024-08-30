@@ -45,7 +45,7 @@ const { posts, tags, showSidebar = true, pager } = Astro.props;
                         {pager.url.prev && (
                             <a
                                 href={pager.url.prev}
-                                class="text-blue-600 hover:text-blue-800 font-medium"
+                                class="text-primary-600 hover:text-primary-800 font-medium"
                             >
                                 &larr; Previous
                             </a>
@@ -56,7 +56,7 @@ const { posts, tags, showSidebar = true, pager } = Astro.props;
                         {pager.url.next && (
                             <a
                                 href={pager.url.next}
-                                class="text-blue-600 hover:text-blue-800 font-medium"
+                                class="text-primary-600 hover:text-primary-800 font-medium"
                             >
                                 Next &rarr;
                             </a>

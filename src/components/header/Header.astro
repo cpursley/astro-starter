@@ -7,13 +7,13 @@ const { header } = getCurrentThemeAttributes();
 
 const headerStyle =
     header.style === "gradient"
-        ? "bg-gradient-to-r from-header-bg-gradient-from to-header-bg-gradient-to"
-        : "bg-header-bg-solid";
+        ? "bg-gradient-to-r from-primary-500 to-secondary-600"
+        : "bg-primary-500";
 ---
 
 <header
     x-data="{ mobileMenuOpen: false }"
-    class:list={[headerStyle, "text-header-text", "shadow-lg"]}
+    class:list={[headerStyle, "shadow-lg"]}
 >
     <div class="container px-4 py-4 mx-auto">
         <nav class="flex items-center justify-between">
@@ -26,7 +26,7 @@ const headerStyle =
             <div class="md:hidden">
                 <button
                     @click="mobileMenuOpen = !mobileMenuOpen"
-                    class="text-white"
+                    class="text-gray-50"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

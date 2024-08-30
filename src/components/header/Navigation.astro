@@ -1,17 +1,16 @@
 ---
 import { config } from "@/config/config";
-import { getCurrentThemeAttributes } from "@/scripts/themeConfig";
-import { navTextClass } from "@/scripts/themeUtils";
 
 const navItems = config.navigation.header.items;
-const { header } = getCurrentThemeAttributes();
-const NavTextClass = navTextClass(header.navigation.text.class);
 ---
 
 <nav class="flex flex-col md:flex-row md:space-x-6">
     {
         navItems.map((item) => (
-            <a href={item.href} class={NavTextClass}>
+            <a
+                href={item.href}
+                class="py-2 text-sm font-medium tracking-wider uppercase transition duration-150 ease-in-out text-gray-50 hover:text-primary-100 md:py-0"
+            >
                 {item.text}
             </a>
         ))

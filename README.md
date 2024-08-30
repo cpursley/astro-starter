@@ -29,34 +29,31 @@ Inside Astro Starter, you'll see the following folders and files:
 │   │   └── blog/
 │   │       ├── post-1.md
 │   │       └── post-2.md
-│   ├── data/
-│   │   ├── footer.ts
-│   │   └── navigation.ts
+│   ├── config/
+│   │   └── themes/
+│   │       └── default.ts
+│   ├── config.ts
 │   ├── i18n/
 │   │   └── ui.ts
 │   └── pages/
 │       ├── blog/
 │       │   └── [...page].astro
+│       ├── about.astro
+│       ├── contact.astro
 │       ├── index.astro
-│       └── about.astro
+│       └── services.astro
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name. To add a blog post, create a new `.md` file in `src/content/blog/`.
-
-The data folder is where you can configure the links and other elements that are used in the site.
-
-The i18n folder is where you can configure the text that is used in the various components.
-
-The config.yaml file is where you can change the theme (requires server restart)
-
 Any static assets, like images, can be placed in the `public/` directory.
-
-
 
 ## 🎨 Extend / Customize
 
-`src/i18n/ui.ts` contains a list of variables that you can customize to your liking.
+To quickly change the site settings like name, navigation links, theme, etc 🔧, edit `src/config/config.ts`.
+
+You can edit the theme in `src/config/themes/default.ts` or copy it to start a new one.
+
+`src/i18n/ui.ts` contains a list of text variables that you can customize to your liking.
 
 ## 🧞 Commands
 
