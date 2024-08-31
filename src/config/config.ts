@@ -16,8 +16,8 @@ export const config = {
             style: 'gradient', // 'solid', 'gradient', 'translucent', or 'none'
             logo: {
                 visible: true,
-                src: '/logo-blue.svg',
-                alt: 'Logo Blue',
+                src: '/logo.svg',
+                alt: 'Logo',
                 height: '8',
                 width: 'auto',
             },
@@ -39,7 +39,7 @@ export const config = {
                     textColor: "text-gray-50",
                     hoverColor: "hover:text-primary-100",
                 },
-                items: [
+                links: [
                     { href: "/", text: "Home" },
                     { href: "/about", text: "About" },
                     { href: "/services", text: "Services" },
@@ -49,12 +49,42 @@ export const config = {
             },
         },
         footer: {
-            items: [
-                { href: "/contact-us", text: "Contact Us" },
-            ],
+            style: {
+                spacing: "px-4 py-6",
+                backgroundColor: "bg-gray-900",
+            },
+            logo: {
+                visible: true,
+                src: '/logo.svg',
+                alt: 'Logo Blue',
+                height: '5',
+                width: 'auto',
+            },
+            copyright: {
+                visible: true,
+                style: {
+                    fontSize: "text-sm",
+                    fontWeight: "font-normal",
+                    textColor: "text-gray-300",
+                },
+            },
+            navItems: {
+                style: {
+                    spacing: "space-x-4",
+                    fontSize: "text-sm",
+                    fontWeight: "font-normal",
+                    textColor: "text-gray-300",
+                    hoverColor: "hover:text-gray-50",
+                },
+                links: [
+                    { href: "/contact", text: "Contact Us" },
+                    { href: "/privacy", text: "Privacy Policy" },
+                    { href: "/terms", text: "Terms of Service" },
+                ],
+            },
         },
     },
-    form: {
+    contactForm: {
         url: 'https://api.web3forms.com/submit',
         key: process.env.WEB3FORMS_KEY
     },

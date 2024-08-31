@@ -2,33 +2,60 @@
 import { useTranslations } from "@/i18n";
 import { config } from "@/config/config";
 
-const footerLinks = config.navigation.footer.items;
+const { footer } = config.navigation;
 const currentYear = new Date().getFullYear();
 const t = useTranslations();
 ---
 
-<footer class="mt-auto text-gray-300 bg-gray-900">
-    <div class="container px-4 py-6 mx-auto">
+<footer
+    class:list={["mt-auto", footer.style.backgroundColor, footer.style.spacing]}
+>
+    <div class="container mx-auto">
         <div class="flex flex-col items-center justify-between md:flex-row">
-            <div class="mb-4 md:mb-0">
-                <p class="text-sm">
-                    &copy; {currentYear}
-                    {t("siteMetadata.title")}. All rights reserved.
-                </p>
+            <div class="flex items-center mb-4 md:mb-0">
+                {
+                    footer.logo.visible && (
+                        <img
+                            src={footer.logo.src}
+                            alt={footer.logo.alt}
+                            class={`mr-3 h-${footer.logo.height} w-${footer.logo.width}`}
+                        />
+                    )
+                }
+                {
+                    footer.copyright.visible && (
+                        <p
+                            class:list={[
+                                footer.copyright.style.fontSize,
+                                footer.copyright.style.fontWeight,
+                                footer.copyright.style.textColor,
+                            ]}
+                        >
+                            &copy; {currentYear} {t("siteMetadata.title")}. All
+                            rights reserved.
+                        </p>
+                    )
+                }
             </div>
 
-            <div class="flex space-x-4">
+            <nav class={`flex ${footer.navItems.style.spacing}`}>
                 {
-                    footerLinks.map((link) => (
+                    footer.navItems.links.map((link) => (
                         <a
                             href={link.href}
-                            class="text-sm transition duration-150 hover:text-gray-50"
+                            class:list={[
+                                "transition duration-150",
+                                footer.navItems.style.fontSize,
+                                footer.navItems.style.fontWeight,
+                                footer.navItems.style.textColor,
+                                footer.navItems.style.hoverColor,
+                            ]}
                         >
                             {link.text}
                         </a>
                     ))
                 }
-            </div>
+            </nav>
         </div>
     </div>
 </footer>

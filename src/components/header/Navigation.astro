@@ -6,9 +6,9 @@ const { navItems } = config.navigation.header;
 
 <nav class="flex flex-col md:flex-row md:space-x-6">
     {
-        navItems.items.map((item) => (
+        navItems.links.map((link) => (
             <a
-                href={item.href}
+                href={link.href}
                 class:list={[
                     "transition duration-150 ease-in-out",
                     "tracking-wider",
@@ -21,7 +21,7 @@ const { navItems } = config.navigation.header;
                     navItems.style.hoverColor,
                 ]}
             >
-                {item.text}
+                {link.text}
             </a>
         ))
     }
