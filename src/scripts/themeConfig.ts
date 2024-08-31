@@ -21,5 +21,5 @@ export function getCurrentThemeAttributes(): Theme {
 }
 
 export function getFormUrl(): string {
-    return config.form?.url || '';
+    return config.contactForm?.url || '';
 }
