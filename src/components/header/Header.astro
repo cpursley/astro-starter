@@ -2,19 +2,15 @@
 import Navigation from "@/components/header/Navigation.astro";
 import Logo from "@/components/header/Logo.astro";
 import config from "@/config/config";
+import { getHeaderStyle, getMenuButtonColor } from "@/scripts/uiUtilities";
 
 const { header } = config.navigation;
 
-const headerStyle =
-    header.style === "gradient"
-        ? "bg-gradient-to-r from-primary-500 to-secondary-600"
-        : "bg-primary-500";
+const { headerStyle, headerClasses } = getHeaderStyle(header.style);
+const menuButtonColor = getMenuButtonColor(header.style);
 ---
 
-<header
-    x-data="{ mobileMenuOpen: false }"
-    class:list={[headerStyle, "shadow-lg"]}
->
+<header x-data="{ mobileMenuOpen: false }" class:list={[headerClasses]}>
     <div class="container px-4 py-4 mx-auto">
         <nav class="flex items-center justify-between">
             <Logo />
@@ -26,7 +22,7 @@ const headerStyle =
             <div class="md:hidden">
                 <button
                     @click="mobileMenuOpen = !mobileMenuOpen"
-                    class="text-gray-50"
+                    class={menuButtonColor}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

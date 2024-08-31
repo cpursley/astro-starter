@@ -13,14 +13,7 @@ export const config = {
     themes,
     navigation: {
         header: {
-            items: [
-                { href: "/", text: "Home" },
-                { href: "/about", text: "About" },
-                { href: "/services", text: "Services" },
-                { href: "/contact", text: "Contact" },
-                { href: "/blog", text: "Blog" },
-            ],
-            style: 'gradient', // 'gradient' or 'solid'
+            style: 'gradient', // 'solid', 'gradient', 'translucent', or 'none'
             logo: {
                 visible: true,
                 src: '/logo-blue.svg',
@@ -30,6 +23,29 @@ export const config = {
             },
             siteTitle: {
                 visible: true,
+                style: {
+                    fontSize: "text-2xl",
+                    fontWeight: "font-bold",
+                    textColor: "text-gray-50",
+                    hoverColor: "hover:text-primary-100",
+                },
+            },
+            navItems: {
+                style: {
+                    spacing: "py-2 md:py-0",
+                    fontSize: "text-sm",
+                    fontWeight: "font-medium",
+                    textTransform: "uppercase",
+                    textColor: "text-gray-50",
+                    hoverColor: "hover:text-primary-100",
+                },
+                items: [
+                    { href: "/", text: "Home" },
+                    { href: "/about", text: "About" },
+                    { href: "/services", text: "Services" },
+                    { href: "/contact", text: "Contact" },
+                    { href: "/blog", text: "Blog" },
+                ],
             },
         },
         footer: {
