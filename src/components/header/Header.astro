@@ -1,9 +1,9 @@
 ---
 import Navigation from "@/components/header/Navigation.astro";
 import Logo from "@/components/header/Logo.astro";
-import { getCurrentThemeAttributes } from "@/scripts/themeConfig";
+import config from "@/config/config";
 
-const { header } = getCurrentThemeAttributes();
+const { header } = config.navigation;
 
 const headerStyle =
     header.style === "gradient"

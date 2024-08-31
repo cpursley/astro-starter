@@ -21,17 +21,4 @@ export type Theme = {
         serif: string;
         heading: string;
     };
-    header: {
-        style: 'gradient' | 'solid';
-        logo: {
-            visible: boolean,
-            src: string;
-            alt: string;
-            height: string;
-            width: string;
-        };
-        siteTitle: {
-            visible: boolean;
-        };
-    };
 };

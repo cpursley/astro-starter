@@ -30,17 +30,4 @@ export const blueTheme = {
         serif: 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
         heading: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFile, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
     },
-    header: {
-        style: 'gradient', // 'gradient' or 'solid'
-        logo: {
-            visible: true,
-            src: '/logo-blue.svg',
-            alt: 'Logo Blue',
-            height: '8',
-            width: 'auto',
-        },
-        siteTitle: {
-            visible: true,
-        },
-    },
 };

@@ -30,17 +30,4 @@ export const emeraldTheme = {
         serif: '"Merriweather", serif',
         heading: '"Montserrat", sans-serif',
     },
-    header: {
-        style: 'solid', // 'gradient' or 'solid'
-        logo: {
-            visible: true,
-            src: '/logo-emerald.svg',
-            alt: 'Emerald Logo',
-            height: '8',
-            width: 'auto',
-        },
-        siteTitle: {
-            visible: true,
-        },
-    },
 };

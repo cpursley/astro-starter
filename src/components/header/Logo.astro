@@ -1,9 +1,9 @@
 ---
 import { useTranslations } from "@/i18n";
-import { getCurrentThemeAttributes } from "@/scripts/themeConfig";
+import config from "@/config/config";
 
 const t = useTranslations();
-const { header } = getCurrentThemeAttributes();
+const { header } = config.navigation;
 const { logo, siteTitle } = header;
 ---
 

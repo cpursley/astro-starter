@@ -20,6 +20,17 @@ export const config = {
                 { href: "/contact", text: "Contact" },
                 { href: "/blog", text: "Blog" },
             ],
+            style: 'gradient', // 'gradient' or 'solid'
+            logo: {
+                visible: true,
+                src: '/logo-blue.svg',
+                alt: 'Logo Blue',
+                height: '8',
+                width: 'auto',
+            },
+            siteTitle: {
+                visible: true,
+            },
         },
         footer: {
             items: [
