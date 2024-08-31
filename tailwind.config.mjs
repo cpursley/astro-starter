@@ -34,6 +34,9 @@ export default {
 					800: colors.secondary[800],
 					900: colors.secondary[900],
 				},
+				light: colors.light,
+				dark: colors.dark,
+				accent: colors.accent,
 			},
 			fontFamily: {
 				sans: [fonts.sans],

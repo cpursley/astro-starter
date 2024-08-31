@@ -26,7 +26,7 @@ export const config = {
                 style: {
                     fontSize: "text-2xl",
                     fontWeight: "font-bold",
-                    textColor: "text-gray-50",
+                    textColor: "text-light",
                     hoverColor: "hover:text-primary-100",
                 },
             },
@@ -36,7 +36,7 @@ export const config = {
                     fontSize: "text-sm",
                     fontWeight: "font-medium",
                     textTransform: "uppercase",
-                    textColor: "text-gray-50",
+                    textColor: "text-light",
                     hoverColor: "hover:text-primary-100",
                 },
                 links: [
@@ -51,12 +51,12 @@ export const config = {
         footer: {
             style: {
                 spacing: "px-4 py-6",
-                backgroundColor: "bg-gray-900",
+                backgroundColor: "bg-dark",
             },
             logo: {
                 visible: true,
                 src: '/logo.svg',
-                alt: 'Logo Blue',
+                alt: 'Logo',
                 height: '5',
                 width: 'auto',
             },
@@ -73,6 +73,7 @@ export const config = {
                     spacing: "space-x-4",
                     fontSize: "text-sm",
                     fontWeight: "font-normal",
+                    textTransform: "none",
                     textColor: "text-gray-300",
                     hoverColor: "hover:text-gray-50",
                 },

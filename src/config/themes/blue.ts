@@ -24,6 +24,9 @@ export const blueTheme = {
             800: '#6b21a8',  // purple-800
             900: '#581c87',  // purple-900
         },
+        light: '#f9fafb',
+        dark: '#0f172a',
+        accent: '#DD3C7B',
     },
     fonts: {
         sans: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',

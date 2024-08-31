@@ -15,6 +15,9 @@ export type Theme = {
     colors: {
         primary: ColorScale,
         secondary: ColorScale,
+        light: string;
+        dark: string;
+        accent: string;
     };
     fonts: {
         sans: string;

@@ -16,7 +16,7 @@ const metaProps = {
 ---
 
 <BaseLayout {...metaProps}>
-    <div class="relative overflow-hidden bg-gray-50">
+    <div class="relative overflow-hidden bg-secondary-200">
         <div class="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:py-12 lg:px-8">
             <div class="lg:text-center">
                 <h2
@@ -29,12 +29,12 @@ const metaProps = {
                 >
                     {t("pages.contact.title")}
                 </p>
-                <p class="mt-4 text-xl text-gray-500">
+                <p class="mt-4 text-xl text-gray-600">
                     {t("pages.contact.description")}
                 </p>
             </div>
             <div
-                class="max-w-2xl mx-auto mt-10 overflow-hidden rounded-lg shadow-md bg-gray-50"
+                class="max-w-2xl mx-auto mt-10 overflow-hidden rounded-lg shadow-md bg-light"
                 x-data="{ 
                     formSubmitted: false,
                     isSubmitting: false,
@@ -84,7 +84,7 @@ const metaProps = {
                             id="firstName"
                             name="firstName"
                             required
-                            class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+                            class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-light focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                             placeholder="First name (required)"
                         />
                     </div>
@@ -99,7 +99,7 @@ const metaProps = {
                             type="text"
                             id="lastName"
                             name="lastName"
-                            class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+                            class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-light focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                             placeholder="Last name"
                         />
                     </div>
@@ -115,7 +115,7 @@ const metaProps = {
                             id="email"
                             name="email"
                             required
-                            class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+                            class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-light focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                             placeholder="Your email address (required)"
                         />
                     </div>
@@ -130,7 +130,7 @@ const metaProps = {
                             type="tel"
                             id="phone"
                             name="phone"
-                            class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+                            class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-light focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                             placeholder="Your phone number"
                         />
                     </div>
@@ -146,7 +146,7 @@ const metaProps = {
                             name="message"
                             rows="4"
                             required
-                            class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+                            class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-light focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                             placeholder="Your message"></textarea>
                     </div>
                     <input

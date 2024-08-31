@@ -24,6 +24,9 @@ export const emeraldTheme = {
             800: '#9a3412',  // orange-800
             900: '#7c2d12',  // orange-900
         },
+        light: '#f9fafb',
+        dark: '#0f172a',
+        accent: '#10b981',
     },
     fonts: {
         sans: '"Poppins", sans-serif',
