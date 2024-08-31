@@ -1,6 +1,6 @@
 ---
-import Navigation from "@/components/header/Navigation.astro";
-import Logo from "@/components/header/Logo.astro";
+import HeaderMenu from "@/components/navigation/HeaderMenu.astro";
+import HeaderLogo from "@/components/navigation/HeaderLogo.astro";
 import config from "@/config/config";
 import { getHeaderStyle, getMenuButtonColor } from "@/scripts/uiUtilities";
 
@@ -13,10 +13,10 @@ const menuButtonColor = getMenuButtonColor(header.style);
 <header x-data="{ mobileMenuOpen: false }" class:list={[headerClasses]}>
     <div class="container px-4 py-4 mx-auto">
         <nav class="flex items-center justify-between">
-            <Logo />
+            <HeaderLogo />
 
             <div class="hidden md:block">
-                <Navigation />
+                <HeaderMenu />
             </div>
 
             <div class="md:hidden">
@@ -54,7 +54,7 @@ const menuButtonColor = getMenuButtonColor(header.style);
         style="transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);"
     >
         <div class="container px-4 py-2 mx-auto">
-            <Navigation />
+            <HeaderMenu />
         </div>
     </div>
 </header>
