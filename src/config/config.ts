@@ -23,22 +23,8 @@ export const config = {
             },
             siteTitle: {
                 visible: true,
-                style: {
-                    fontSize: "text-2xl",
-                    fontWeight: "font-bold",
-                    textColor: "text-neutral-50",
-                    hoverColor: "hover:text-primary-100",
-                },
             },
             navItems: {
-                style: {
-                    spacing: "py-2 md:py-0",
-                    fontSize: "text-sm",
-                    fontWeight: "font-medium",
-                    textTransform: "uppercase",
-                    textColor: "text-neutral-50",
-                    hoverColor: "hover:text-primary-100",
-                },
                 links: [
                     { href: "/", text: "Home" },
                     { href: "/about", text: "About" },
@@ -49,10 +35,6 @@ export const config = {
             },
         },
         footer: {
-            style: {
-                spacing: "px-4 py-6",
-                backgroundColor: "bg-neutral-900",
-            },
             logo: {
                 visible: true,
                 src: '/logo.svg',
@@ -62,21 +44,8 @@ export const config = {
             },
             copyright: {
                 visible: true,
-                style: {
-                    fontSize: "text-sm",
-                    fontWeight: "font-normal",
-                    textColor: "text-neutral-200",
-                },
             },
             navItems: {
-                style: {
-                    spacing: "space-x-4",
-                    fontSize: "text-sm",
-                    fontWeight: "font-normal",
-                    textTransform: "none",
-                    textColor: "text-neutral-200",
-                    hoverColor: "hover:text-neutral-50",
-                },
                 links: [
                     { href: "/contact", text: "Contact Us" },
                     { href: "/privacy", text: "Privacy Policy" },

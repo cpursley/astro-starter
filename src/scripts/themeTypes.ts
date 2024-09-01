@@ -27,4 +27,41 @@ export type Theme = {
         serif: string;
         heading: string;
     };
+    components: {
+        header: {
+            siteTitle: {
+                fontSize: string;
+                fontWeight: string;
+                textColor: string;
+                hoverColor: string;
+            };
+            navItems: {
+                spacing: string;
+                fontSize: string;
+                fontWeight: string;
+                textTransform: string;
+                textColor: string;
+                hoverColor: string;
+            };
+        };
+        footer: {
+            style: {
+                spacing: string;
+                backgroundColor: string;
+            };
+            copyright: {
+                fontSize: string;
+                fontWeight: string;
+                textColor: string;
+            };
+            navItems: {
+                spacing: string;
+                fontSize: string;
+                fontWeight: string;
+                textTransform: string;
+                textColor: string;
+                hoverColor: string;
+            };
+        };
+    };
 };

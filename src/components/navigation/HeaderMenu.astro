@@ -9,17 +9,7 @@ const { navItems } = config.navigation.header;
         navItems.links.map((link) => (
             <a
                 href={link.href}
-                class:list={[
-                    "transition duration-150 ease-in-out",
-                    "tracking-wider",
-
-                    navItems.style.spacing,
-                    navItems.style.fontSize,
-                    navItems.style.fontWeight,
-                    navItems.style.textTransform,
-                    navItems.style.textColor,
-                    navItems.style.hoverColor,
-                ]}
+                class="header-nav-item transition duration-150 ease-in-out tracking-wider"
             >
                 {link.text}
             </a>

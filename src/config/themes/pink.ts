@@ -44,5 +44,42 @@ export const pinkTheme = {
         serif: '"Playfair Display", Georgia, "Times New Roman", serif',
         heading: '"Cormorant Garamond", Georgia, serif',
     },
+    components: {
+        header: {
+            siteTitle: {
+                fontSize: 'fontSize.2xl',
+                fontWeight: 'fontWeight.bold',
+                textColor: 'colors.neutral.50',
+                hoverColor: 'colors.primary.100',
+            },
+            navItems: {
+                spacing: 'spacing.2 md:spacing.0',
+                fontSize: 'fontSize.sm',
+                fontWeight: 'fontWeight.medium',
+                textTransform: 'uppercase',
+                textColor: 'colors.neutral.50',
+                hoverColor: 'colors.primary.100',
+            },
+        },
+        footer: {
+            style: {
+                spacing: 'spacing.4',
+                backgroundColor: 'colors.neutral.900',
+            },
+            copyright: {
+                fontSize: 'fontSize.sm',
+                fontWeight: 'fontWeight.normal',
+                textColor: 'colors.neutral.200',
+            },
+            navItems: {
+                spacing: 'spacing.4',
+                fontSize: 'fontSize.sm',
+                fontWeight: 'fontWeight.normal',
+                textTransform: 'none',
+                textColor: 'colors.neutral.200',
+                hoverColor: 'colors.neutral.50',
+            },
+        },
+    },
 };
 

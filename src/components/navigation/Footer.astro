@@ -7,9 +7,7 @@ const currentYear = new Date().getFullYear();
 const t = useTranslations();
 ---
 
-<footer
-    class:list={["mt-auto", footer.style.backgroundColor, footer.style.spacing]}
->
+<footer class="footer mt-auto">
     <div class="container mx-auto">
         <div class="flex flex-col items-center justify-between md:flex-row">
             <div class="flex items-center mb-4 md:mb-0">
@@ -24,13 +22,7 @@ const t = useTranslations();
                 }
                 {
                     footer.copyright.visible && (
-                        <p
-                            class:list={[
-                                footer.copyright.style.fontSize,
-                                footer.copyright.style.fontWeight,
-                                footer.copyright.style.textColor,
-                            ]}
-                        >
+                        <p class="footer-copyright">
                             &copy; {currentYear} {t("siteMetadata.title")}. All
                             rights reserved.
                         </p>
@@ -38,19 +30,12 @@ const t = useTranslations();
                 }
             </div>
 
-            <nav class={`flex ${footer.navItems.style.spacing}`}>
+            <nav class="flex space-x-4">
                 {
                     footer.navItems.links.map((link) => (
                         <a
                             href={link.href}
-                            class:list={[
-                                "transition duration-150",
-                                footer.navItems.style.fontSize,
-                                footer.navItems.style.fontWeight,
-                                footer.navItems.style.textTransform,
-                                footer.navItems.style.textColor,
-                                footer.navItems.style.hoverColor,
-                            ]}
+                            class="footer-nav-item transition duration-150"
                         >
                             {link.text}
                         </a>

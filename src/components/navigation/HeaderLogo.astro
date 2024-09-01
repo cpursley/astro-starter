@@ -19,20 +19,7 @@ const { logo, siteTitle } = header;
     }
     {
         siteTitle.visible && (
-            <span
-                class:list={[
-                    "transition-colors",
-                    "duration-150",
-                    "ease-in-out",
-
-                    siteTitle.style.fontSize,
-                    siteTitle.style.fontWeight,
-                    siteTitle.style.textColor,
-                    siteTitle.style.hoverColor,
-                ]}
-            >
-                {t("siteMetadata.title")}
-            </span>
+            <span class="header-site-title">{t("siteMetadata.title")}</span>
         )
     }
 </a>

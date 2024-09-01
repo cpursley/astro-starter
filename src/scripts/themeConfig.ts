@@ -15,11 +15,6 @@ export function getThemeConfig(themeName: ThemeName): Theme {
     return config.themes[themeName] as Theme;
 }
 
-export function getCurrentThemeAttributes(): Theme {
-    const currentTheme = getTheme();
-    return getThemeConfig(currentTheme);
-}
-
 export function getFormUrl(): string {
     return config.contactForm?.url || '';
 }
