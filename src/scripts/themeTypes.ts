@@ -11,12 +11,15 @@ type ColorScale = {
     900: string;
 };
 
+type ExtendedColorScale = ColorScale & {
+    950: string;
+};
+
 export type Theme = {
     colors: {
         primary: ColorScale,
         secondary: ColorScale,
-        light: string;
-        dark: string;
+        neutral: ExtendedColorScale,
         accent: string;
     };
     fonts: {
