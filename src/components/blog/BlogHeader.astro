@@ -42,20 +42,20 @@ const {
     {
         isLink ? (
             <a href={`/blog/${slug}`} class="block">
-                <h1 class="mb-2 text-3xl font-bold text-gray-900 transition-colors group-hover:text-primary-600">
+                <h1 class="mb-2 text-3xl font-bold text-neutral-900 transition-colors group-hover:text-primary-600">
                     {title}
                 </h1>
             </a>
         ) : (
-            <h1 class="mb-2 text-3xl font-bold text-gray-900">{title}</h1>
+            <h1 class="mb-2 text-3xl font-bold text-neutral-900">{title}</h1>
         )
     }
-    <div class="flex items-center mb-4 space-x-4 text-sm text-gray-500">
+    <div class="flex items-center mb-4 space-x-4 text-sm text-neutral-700">
         <span>By {author}</span>
         <span>•</span>
         <FormattedDate date={pubDate} />
     </div>
-    <p class="mb-4 text-lg text-gray-600">
+    <p class="mb-4 text-lg text-neutral-700">
         <em>{description}</em>
     </p>
 </div>

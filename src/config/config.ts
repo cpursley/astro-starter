@@ -8,7 +8,7 @@ export const config = {
         trailingSlash: false,
     },
     ui: {
-        theme: 'blue', // 'blue', 'emerald', 'custom', etc
+        theme: 'blue', // 'blue', 'emerald', 'pink', 'custom', etc
     },
     themes,
     navigation: {
@@ -26,7 +26,7 @@ export const config = {
                 style: {
                     fontSize: "text-2xl",
                     fontWeight: "font-bold",
-                    textColor: "text-light",
+                    textColor: "text-neutral-50",
                     hoverColor: "hover:text-primary-100",
                 },
             },
@@ -36,7 +36,7 @@ export const config = {
                     fontSize: "text-sm",
                     fontWeight: "font-medium",
                     textTransform: "uppercase",
-                    textColor: "text-light",
+                    textColor: "text-neutral-50",
                     hoverColor: "hover:text-primary-100",
                 },
                 links: [
@@ -51,7 +51,7 @@ export const config = {
         footer: {
             style: {
                 spacing: "px-4 py-6",
-                backgroundColor: "bg-dark",
+                backgroundColor: "bg-neutral-900",
             },
             logo: {
                 visible: true,
@@ -65,7 +65,7 @@ export const config = {
                 style: {
                     fontSize: "text-sm",
                     fontWeight: "font-normal",
-                    textColor: "text-gray-300",
+                    textColor: "text-neutral-200",
                 },
             },
             navItems: {
@@ -74,8 +74,8 @@ export const config = {
                     fontSize: "text-sm",
                     fontWeight: "font-normal",
                     textTransform: "none",
-                    textColor: "text-gray-300",
-                    hoverColor: "hover:text-gray-50",
+                    textColor: "text-neutral-200",
+                    hoverColor: "hover:text-neutral-50",
                 },
                 links: [
                     { href: "/contact", text: "Contact Us" },

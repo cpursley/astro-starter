@@ -60,7 +60,7 @@ const hasTableOfContents = headings && headings.length > 0;
 
                 <div class="sticky space-y-8 top-8">
                     <div>
-                        <h2 class="mb-4 text-xl font-bold text-gray-900">
+                        <h2 class="mb-4 text-xl font-bold text-neutral-900">
                             Tags
                         </h2>
                         <TagList tags={tags} />
@@ -69,7 +69,7 @@ const hasTableOfContents = headings && headings.length > 0;
                     {
                         hasTableOfContents && (
                             <div>
-                                <h2 class="mb-4 text-xl font-bold text-gray-900">
+                                <h2 class="mb-4 text-xl font-bold text-neutral-900">
                                     Table Of Contents
                                 </h2>
                                 <div class="mb-8">
@@ -91,7 +91,7 @@ const hasTableOfContents = headings && headings.length > 0;
                 />
 
                 <main
-                    class="mb-8 prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-primary-600 hover:prose-a:text-primary-800"
+                    class="mb-8 prose prose-lg max-w-none prose-headings:text-neutral-900 prose-a:text-primary-600 hover:prose-a:text-primary-800"
                 >
                     <slot />
                 </main>

@@ -22,7 +22,7 @@ const { service } = Astro.props;
 ---
 
 <div
-    class="flex flex-col overflow-hidden transition duration-300 ease-in-out transform rounded-lg shadow-md bg-light hover:-translate-y-1 hover:shadow-xl"
+    class="flex flex-col overflow-hidden transition duration-300 ease-in-out transform rounded-lg shadow-md bg-neutral-50 hover:-translate-y-1 hover:shadow-xl"
 >
     <div class="flex-grow p-5">
         <div
@@ -34,10 +34,10 @@ const { service } = Astro.props;
                 class="object-contain h-full transition duration-300 ease-in-out transform hover:scale-105"
             />
         </div>
-        <h3 class="mb-2 text-lg font-medium leading-6 text-gray-900">
+        <h3 class="mb-2 text-lg font-medium leading-6 text-neutral-900">
             {service.title}
         </h3>
-        <p class="mb-4 text-sm text-gray-800">
+        <p class="mb-4 text-sm text-neutral-800">
             {service.description}
         </p>
     </div>
@@ -46,13 +46,13 @@ const { service } = Astro.props;
             <span class="text-2xl font-bold text-primary-600">
                 ${service.price.toFixed(2)}
             </span>
-            <span class="text-sm text-gray-800">
+            <span class="text-sm text-neutral-800">
                 Category: {service.category}
             </span>
         </div>
         <div class="flex items-center">
             <StarRating rating={service.rating.rate} />
-            <p class="ml-2 text-sm text-gray-800">
+            <p class="ml-2 text-sm text-neutral-800">
                 {service.rating.rate} (
                 {service.rating.count} reviews)
             </p>

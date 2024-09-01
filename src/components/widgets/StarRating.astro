@@ -7,7 +7,9 @@ const { rating } = Astro.props;
         Array.from({ length: 5 }, (_, i) => (
             <svg
                 class={`h-5 w-5 flex-shrink-0 ${
-                    i < Math.round(rating) ? "text-yellow-400" : "text-gray-300"
+                    i < Math.round(rating)
+                        ? "text-yellow-400"
+                        : "text-neutral-300"
                 }`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
