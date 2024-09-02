@@ -102,7 +102,8 @@ const hasTableOfContents = headings && headings.length > 0;
     </div>
 </BaseLayout>
 
-<script>
-    import { initSmoothScroll } from "../scripts/smoothScroll";
-    initSmoothScroll('.toc a[href^="#"], .sidebar-nav a[href^="#"]');
-</script>
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
